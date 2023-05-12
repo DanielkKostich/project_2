@@ -3,9 +3,10 @@ const router = require('express').Router();
 const { User } = require('../models');
 const withAuth = require('../utils/auth');
 
+
 // Main page route
 router.get('/', (req, res) => {
-  res.render('index');
+  res.render('homepage');
 });
 
 // Login page route

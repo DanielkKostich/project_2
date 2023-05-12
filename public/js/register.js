@@ -3,7 +3,6 @@ const registerFormHandler = async (event) => {
     event.preventDefault();
   
     // Gather the data from the form elements on the page
-    const username = document.querySelector('#user-register')
     const email = document.querySelector('#email-register').value.trim();
     const password = document.querySelector('#password-register').value.trim();
   

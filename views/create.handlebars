@@ -1,0 +1,29 @@
+<h2>Create Account</h2>
+
+{{!-- Todo 
+  the  for="password-create" and for="email-create" leads to nothing right now, aswell as the id's.
+  most likely will need new js file for password comparing, hashing, and email authentacation 
+    --}}
+
+{{!-- Email create --}}
+<form class="form login-form">
+  <div class="form-group">
+    <label for="email-create">Enter your email:</label>
+    <input class="form-input" type="text" id="email-create" />
+  </div>
+  {{!-- Password Create --}}
+  <div class="form-group">
+    <label for="password-create">Enter your password:</label>
+    <input class="form-input" type="password" id="password-create" />
+  </div>
+  <div class="form-group">
+    <label for="password-create">Enter your password again:</label>
+    <input class="form-input" type="password" id="password-create" />
+  </div>
+{{!-- Submit button --}}
+  <div class="form-group">
+    <button class="btn btn-primary" type="submit">Create</button>
+  </div>
+</form>
+
+<script src="/js/login.js"></script>

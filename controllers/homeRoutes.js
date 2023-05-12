@@ -14,4 +14,9 @@ router.get('/login', (req, res) => {
   res.render('login');
 });
 
+// Create Account page route
+router.get('/create', (req, res) => {
+  res.render('create');
+});
+
 module.exports = router;

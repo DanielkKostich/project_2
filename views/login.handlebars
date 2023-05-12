@@ -1,18 +1,17 @@
 <h2>Login</h2>
 
-<form class="form login-form">
-  <div class="form-group">
-    <label for="email-login">email:</label>
-    <input class="form-input" type="text" id="email-login" />
-  </div>
-  <div class="form-group">
-    <label for="password-login">password:</label>
-    <input class="form-input" type="password" id="password-login" />
-  </div>
-  <div class="form-group">
-    <button class="btn btn-primary" type="submit">login</button>
-    dont have a account? <a href="/create">Create one!</a>
-  </div>
+
+<form action="/login/password" method="post">
+    <section>
+        <label for="username">Username</label>
+        <input id="username" name="username" type="text" autocomplete="username" required autofocus>
+    </section>
+    <section>
+        <label for="current-password">Password</label>
+        <input id="current-password" name="password" type="password" autocomplete="current-password" required>
+    </section>
+    <button type="submit">Sign in</button>
+
 </form>
 
 <script src="/js/login.js"></script>

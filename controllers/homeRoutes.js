@@ -6,6 +6,7 @@ const withAuth = require('../utils/auth');
 
 // Main page route
 router.get('/', (req, res) => {
+  console.log('serving the homepage');
   res.render('homepage');
 });
 
@@ -15,7 +16,7 @@ router.get('/login', (req, res) => {
 });
 
 // Create Account page route
-router.get('/create', (req, res) => {
+router.get('/signup', function(req, res, next) {
   res.render('create');
 });
 

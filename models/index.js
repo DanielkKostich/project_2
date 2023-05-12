@@ -1,11 +1,13 @@
-const express = require('express');
-const exphbs  = require('express-handlebars');
-const mysql = require('mysql2');
-const Sequelize = require('sequelize');
-const session = require('express-session');
-require('dotenv').config();
+const Customer = require('./Customer');
+const Employee = require('./Employee');
+const CustEmp = require('./CustEmp')
 
-const sequelize = new Sequelize(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PASSWORD, {
-    host: process.env.DB_HOST,
-    dialect: 'mysql'
-  });
+Customer.belongsToMany(Employee, {
+    through: 'cust_emp'
+})
+
+Employee.belongsToMany(Customer, {
+    through: 'cust_emp',
+})
+
+module.exports = { Customer, Employee, CustEmp };

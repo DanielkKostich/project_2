@@ -5,32 +5,64 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>FresHair</title>
-  <link rel="stylesheet" href="/css/jass.css">
-  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" type="text/css" href="/css/jass.css">
+  <link rel="stylesheet" type="text/css" href="/css/style.css">
 </head>
 
 <body>
   <div class="flex-column justify-space-around">
-    <header class="display-flex justify-space-between align-center p-2">
-      <h1>
-        <span role="img" aria-label="money">💇</span>
-        <a href="/">FresHair</a>
+    <header >
+      <div class="banner" style="background-color: rgb(149, 110, 185);">
+      <h1 class="flex-row centered" id="logo">
+        <div id="logocard">
+        <img src="../../images/logo.png" style="width:50px;">
+        <a href="/" class="unadornedAnchor">FresHair</a>
+        </div>
       </h1>
       <nav>
+      <div style="justify-content:space-evenly;" id="wideScreenButtons" class="flex-row navigation">
+        <a href="/" class="navbutton unadornedAnchor">home</a>
         <!-- Conditionally render login or logout links -->
         {{#if logged_in}}
-        <a href="/profile">profile</a> |
-        <button class="no-button" id="logout">logout</button>
+        <a class="navbutton" href="/profile">profile</a> 
+        <button class="no-button navbutton" id="logout" class="unadornedAnchor"><logout></button>
         {{else}}
-        
-        <a href="/login">login</a>
+        <a href="/login" class=" navbutton unadornedAnchor">login</a>
+        <a href="/signup" class="navbutton unadornedAnchor">Sign Up</a>
         {{/if}}
+        <a href="/" class="navbutton unadornedAnchor">Schedule</a>
+        <a href="/" class="navbutton unadornedAnchor">Contact Us</a>
+        {{#if logged_in}}
+        <a href="/" id="logoutNav" class="logbutton unadornedAnchor"><img style="width:20px; padding:5px 0;" src="https://icons.iconarchive.com/icons/iconsmind/outline/256/Key-icon.png"></a>
+        {{/if}}
+        </div>
+
+        <div style="justify-content:space-evenly;" id="smallScreenButton" class="flex-row navigation">
+        <a href="/" class="navbutton unadornedAnchor">home</a>
+        </div>
+
       </nav>
+      </div>
+      </div>
     </header>
+    <div class="flex-row mt-5">
+    <aside>
+      <div class="flex-column yarr" >
+        Disable your ad-blocker.
+      </div>
+    </aside>
+    <div class="flex-column mainsection">
     <main class="container container-fluid mt-5">
       <!-- Render the sub layout -->
       {{{ body }}}
     </main>
+    </div>
+    <aside>
+      <div class="flex-column yarr">
+        Disable your ad-blocker.
+      </div>
+    </aside>
+    </div>
     <footer>
       
     </footer>

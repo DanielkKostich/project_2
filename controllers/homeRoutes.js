@@ -20,4 +20,8 @@ router.get('/signup', function(req, res, next) {
   res.render('create');
 });
 
+router.get('/reviews', function(req, res, next) {
+  res.render('reviews');
+});
+
 module.exports = router;

@@ -19,6 +19,8 @@ router.get('/Employee_Login', (req, res) => {
   res.render('emplogin');
 });
 
+// post route for creating account
+
 // Create Account page route
 router.get('/signup', function(req, res, next) {
   res.render('create');

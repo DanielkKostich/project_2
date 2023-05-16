@@ -53,6 +53,7 @@ a:hover{
     justify-content: center;
     align-items: center;
     align-content: center;
+    text-align: center;
 }
 .pl-5{
     padding-left: 15px;
@@ -256,6 +257,12 @@ a:hover{
 .pl-5{
     padding-left: 15px;
 }
+.pt-5{
+    padding-top: 30px;
+}
+.pl-5{
+    margin-left: 200px;
+}
 .mb-5{
     padding-bottom: 20px;
 }
@@ -342,10 +349,43 @@ background: linear-gradient(175deg, rgba(203,196,170,1) 0%, rgba(164,157,131,1) 
     font-weight: 400;
     font-size: 1.2rem;
 }
+.d-flex{
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+}
+.flexleft {
+    justify-content: start;
+    align-content: start;
+    text-align: left;
+}
 
 .passwordFormDefault{
-    background-color: red;
+    background-color: rgb(248, 248, 248);
+    width:80%;
+    height: 30px;
+    box-shadow: none;
+    border-radius: 10px;
+    border: 1px solid black;
 }
+.passwordFormActive{
+    background-color: rgb(221, 21, 21);
+    width:80%;
+    height: 30px;
+    box-shadow: none;
+    border-radius: 10px;
+    border: 1px solid black;
+}
+
+.error {
+    border-color: red !important;
+  }
+  
+  .error-message {
+    color: red;
+    font-size: 14px;
+    margin-top: 5px;
+  }
 
 
 @media screen and (max-width:1700px){

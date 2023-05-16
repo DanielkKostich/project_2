@@ -17,14 +17,21 @@ CustEmp.init(
       type: DataTypes.INTEGER,
       references: {
         model: 'customer',
-        key: 'id',
+        key: 'cusid',
       },
     },
     employee_id: {
       type: DataTypes.INTEGER,
       references: {
         model: 'employee',
-        key: 'id',
+        key: 'empid',
+      },
+    },
+    appointment_id: {
+      type: DataTypes.INTEGER,
+      references:{
+        model: 'appointment',
+        key: 'aptid'
       },
     },
   },

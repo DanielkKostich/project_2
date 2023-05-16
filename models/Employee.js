@@ -10,7 +10,7 @@ class Employee extends Model {
 
 Employee.init(
     {
-      id: {
+      empid: {
         type: DataTypes.INTEGER,
         allowNull: false,
         primaryKey: true,
@@ -38,6 +38,10 @@ Employee.init(
         validate: {
           len: [8],
         },
+      },
+      appointments: {
+        type: DataTypes.STRING,
+        allowNull: true,
       },
     },
     {

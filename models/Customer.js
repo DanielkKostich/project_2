@@ -10,7 +10,7 @@ class Customer extends Model {
 
 Customer.init(
   {
-    id: {
+    cusid: {
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true,
@@ -34,6 +34,10 @@ Customer.init(
       validate: {
         len: [8],
       },
+    },
+    appointments: {
+      type: DataTypes.STRING,
+      allowNull: true,
     },
   },
   {

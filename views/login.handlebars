@@ -1,14 +1,14 @@
 <h2>Login</h2>
 
 
-<form action="/login/password" method="post">
+<form action="/api/users" method="post">
     <section>
-        <label for="username">Username</label>
-        <input id="username" name="username" type="text" autocomplete="username" required autofocus>
+        <label for="email">Email</label>
+        <input name="email" type="text" id="email-login" autocomplete="email" required autofocus>
     </section>
     <section>
         <label for="current-password">Password</label>
-        <input id="current-password" name="password" type="password" autocomplete="current-password" required>
+        <input id="password-login" name="password" type="password" autocomplete="current-password" required>
     </section>
     <button type="submit">Sign in</button>
 

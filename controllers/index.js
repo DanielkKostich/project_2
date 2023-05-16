@@ -4,13 +4,10 @@ const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 const { User } = require('../models');
 const withAuth = require('../utils/auth');
-
-<<<<<<< HEAD
+const apiRoutes = require('./api');
+const homeRoutes = require('./homeRoutes');
+const authRoutes = require('./authRoutes');
 const app = express();
-=======
-// We have to use sequelize for the database, putting another sql system in here with it might get confusing. 
-var SQLiteStore = require('connect-sqlite3')(session);
->>>>>>> 0488c9dab69f35323710a7e99decaf5650360419
 
 // Middleware
 app.use(express.urlencoded({ extended: true }));
@@ -47,7 +44,6 @@ passport.use(
   )
 );
 
-<<<<<<< HEAD
 passport.serializeUser((user, done) => {
   done(null, user.id);
 });
@@ -59,41 +55,11 @@ passport.deserializeUser((id, done) => {
     })
     .catch((err) => done(err));
 });
-=======
-// var indexRouter = require('./routes/index');
-// var authRouter = require('./routes/auth');
-
-// We can't have more than 1 session at a time. I've left the one in the server.js file up
-// app.use(express.static(path.join(__dirname, 'public')));
-// app.use(session({
-//   secret: 'keyboard cat',
-//   resave: false,
-//   saveUninitialized: false,
-//   store: new SQLiteStore({ db: 'sessions.db', dir: './var/db' })
-// }));
-// app.use(passport.authenticate('session'));
-
-//Currently these point to nothing so I've disabled them.
-// app.use('/', indexRouter);
-// app.use('/', authRouter);
->>>>>>> 0488c9dab69f35323710a7e99decaf5650360419
 
 // Routes
-app.get('/', (req, res) => {
-  res.render('index');
-});
-
-app.get('/login', (req, res) => {
-  res.render('login');
-});
-
-app.post(
-  '/login',
-  passport.authenticate('local', {
-    successRedirect: '/dashboard',
-    failureRedirect: '/login'
-  })
-);
+app.use('/api', apiRoutes);
+app.use('/', homeRoutes);
+app.use('/', authRoutes);
 
 app.get('/dashboard', withAuth, (req, res) => {
   res.render('dashboard');

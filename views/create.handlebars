@@ -7,19 +7,24 @@
     <label for="email-create">Enter your email:</label>
     <input class="form-input" type="text" id="email-register" />
   </div>
+  {{!-- Name Create --}}
+  <div class="form-group">
+    <label for="user-create">Enter your name:</label>
+    <input class="form-input" type="text" id="name-register"/>
+  </div>
   {{!-- Password Create --}}
   <div class="form-group">
     <label for="password-create">Enter your password:</label>
-    <input class="form-input" type="password" id="password-register-a" />
+    <input class="passwordFormDefault" type="password" id="password-register-a" placeholder=""/>
   </div>
   <div class="form-group">
     <label for="password-create">Enter your password again:</label>
-    <input class="form-input" type="password" id="password-register-b" />
+    <input class="passwordFormDefault" type="password" id="password-register-b" />
   </div>
 {{!-- Submit button --}}
   <div class="form-group">
-    <button class="btn btn-primary" type="submit">Create</button>
+    <button class="btn btn-primary" type="submit" id="submitbutton">Create</button>
   </div>
 </form>
 </div>
-<script src="../public/js/register.js"></script>
+<script src="/js/register.js"></script>

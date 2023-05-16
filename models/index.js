@@ -19,4 +19,4 @@ Appointment.belongsTo(Employee, {
     through: 'cust_emp',
 })
 
-module.exports = { Customer, Employee, CustEmp };
+module.exports = { Customer, Employee, CustEmp, Appointment };

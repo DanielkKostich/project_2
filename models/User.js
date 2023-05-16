@@ -16,6 +16,11 @@ User.init(
       primaryKey: true,
       autoIncrement: true,
     },
+    username: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      unique: true
+    },
     name: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -32,7 +37,10 @@ User.init(
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        len: [8],
+        len: {
+          args: [8],
+          msg: "Password must be at least 8 characters long"
+        }
       },
     },
   },

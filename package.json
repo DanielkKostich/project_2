@@ -2,7 +2,7 @@
   "name": "project_2",
   "version": "1.0.0",
   "description": "this is the second group project",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
@@ -13,6 +13,7 @@
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^5.0.0",
+    "bcryptjs": "^2.4.3",
     "connect-session-sequelize": "^7.0.4",
     "connect-sqlite3": "^0.9.13",
     "dotenv": "^8.6.0",

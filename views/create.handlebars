@@ -1,37 +1,18 @@
-<h2>Create Account</h2>
-
-<h1>Sign up</h1>
-<form action="/signup" method="post">
-    <section>
-        <label for="username">Username</label>
-        <input id="username" name="username" type="text" autocomplete="username" required>
-    </section>
-    <section>
-        <label for="new-password">Password</label>
-        <input id="new-password" name="password" type="password" autocomplete="new-password" required>
-    </section>
-    <button type="submit">Sign up</button>
-</form>
-
-{{!-- Email create --}}
-<form class="form login-form">
-  <div class="form-group">
-    <label for="email-create">Enter your email:</label>
-    <input class="form-input" type="text" id="email-create" />
+<h1>Register</h1>
+<form method="post" action="/register">
+  <div>
+    <label>Username:</label>
+    <input type="text" name="username" required>
   </div>
-  {{!-- Password Create --}}
-  <div class="form-group">
-    <label for="password-create">Enter your password:</label>
-    <input class="form-input" type="password" id="password-create" />
+  <div>
+    <label>Email:</label>
+    <input type="email" name="email" required>
   </div>
-  <div class="form-group">
-    <label for="password-create">Enter your password again:</label>
-    <input class="form-input" type="password" id="password-create" />
+  <div>
+    <label>Password:</label>
+    <input type="password" name="password" required>
   </div>
-{{!-- Submit button --}}
-  <div class="form-group">
-    <button class="btn btn-primary" type="submit">Create</button>
+  <div>
+    <button type="submit">Register</button>
   </div>
 </form>
-
-<script src="/js/login.js"></script>

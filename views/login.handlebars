@@ -1,15 +1,17 @@
-<h2>Login</h2>
-
-<form action="/login/password" method="post">
-    <section>
-        <label for="username">Username</label>
-        <input id="username" name="username" type="text" autocomplete="username" required autofocus>
-    </section>
-    <section>
-        <label for="current-password">Password</label>
-        <input id="current-password" name="password" type="password" autocomplete="current-password" required>
-    </section>
-    <button type="submit">Sign in</button>
+<h1>Login</h1>
+{{#if message}}
+  <div>{{message}}</div>
+{{/if}}
+<form method="post" action="/login">
+  <div>
+    <label>Username:</label>
+    <input type="text" name="username" required>
+  </div>
+  <div>
+    <label>Password:</label>
+    <input type="password" name="password" required>
+  </div>
+  <div>
+    <button type="submit">Login</button>
+  </div>
 </form>
-
-<script src="/js/login.js"></script>

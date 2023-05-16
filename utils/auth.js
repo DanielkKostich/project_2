@@ -1,21 +1,21 @@
 var express = require('express');
 var passport = require('passport');
 var LocalStrategy = require('passport-local');
-var crypto = require('crypto');
-var db = require('./db');
+var bcrypt = require('bcrypt');
+var db = require('../db');
 var router = express.Router();
 
 passport.use(new LocalStrategy(function verify(username, password, cb) {
-  db.get('SELECT * FROM users WHERE username = ?', [ username ], function(err, row) {
+  db.get('SELECT * FROM users WHERE username = ?', [ username ], function(err, user) {
     if (err) { return cb(err); }
-    if (!row) { return cb(null, false, { message: 'Incorrect username or password.' }); }
+    if (!user) { return cb(null, false, { message: 'Incorrect username or password.' }); }
 
-    crypto.pbkdf2(password, row.salt, 310000, 32, 'sha256', function(err, hashedPassword) {
+    bcrypt.pbkdf2(password, user.salt, 310000, 32, 'sha256', function(err, hashedPassword) {
       if (err) { return cb(err); }
-      if (!crypto.timingSafeEqual(row.hashed_password, hashedPassword)) {
+      if (!bcrypt.timingSafeEqual(user.hashed_password, hashedPassword)) {
         return cb(null, false, { message: 'Incorrect username or password.' });
       }
-      return cb(null, row);
+      return cb(null, user);
     });
   });
 }));
@@ -26,7 +26,11 @@ router.get('/login', function(req, res, next) {
 
 passport.serializeUser(function(user, cb) {
   process.nextTick(function() {
-    cb(null, { id: user.id, username: user.username });
+    return cb(null, {
+      id: user.id,
+      username: user.username,
+      picture: user.picture
+    });
   });
 });
 
@@ -53,8 +57,8 @@ router.get('/signup', function(req, res, next) {
 });
 
 router.post('/signup', function(req, res, next) {
-  var salt = crypto.randomBytes(16);
-  crypto.pbkdf2(req.body.password, salt, 310000, 32, 'sha256', function(err, hashedPassword) {
+  var salt = bcrypt.randomBytes(16);
+  bcrypt.pbkdf2(req.body.password, salt, 310000, 32, 'sha256', function(err, hashedPassword) {
     if (err) { return next(err); }
     db.run('INSERT INTO users (username, hashed_password, salt) VALUES (?, ?, ?)', [
       req.body.username,

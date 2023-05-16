@@ -1,22 +1,15 @@
 const Customer = require('./Customer');
 const Employee = require('./Employee');
+const Review = require('./Review')
 const CustEmp = require('./CustEmp');
 const Appointment = require('./Appointment');
 
 Customer.belongsToMany(Employee, {
-    through: 'cust_emp'
+    through: 'review'
 })
 
 Employee.belongsToMany(Customer, {
-    through: 'cust_emp',
+    through: 'review',
 })
 
-Appointment.belongsTo(Customer, {
-    through: 'cust_emp',
-})
-
-Appointment.belongsTo(Employee, {
-    through: 'cust_emp',
-})
-
-module.exports = { Customer, Employee, CustEmp, Appointment };
+module.exports = { Customer, Employee, Review };

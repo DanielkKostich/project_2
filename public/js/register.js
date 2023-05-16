@@ -1,28 +1,26 @@
-const registerFormHandler = async (event) => {
-    // Stop the browser from submitting the form so we can do so with JavaScript
-    event.preventDefault();
-  
-    // Gather the data from the form elements on the page
-    const email = document.querySelector('#email-register').value.trim();
-    const password = document.querySelector('#password-register').value.trim();
-  
-    if (email && password) {
-      // Send the e-mail and password to the server
-      const response = await fetch('/api/users/register', {
-        method: 'POST',
-        body: JSON.stringify({user, email, password }),
-        headers: { 'Content-Type': 'application/json' },
-      });
-  
-      if (response.ok) {
-        document.location.replace('/');
-      } else {
-        alert('Failed to register new user.');
-      }
-    }
+// function to handle review submission
+function submitReview(event) {
+  event.preventDefault();
+
+  // form values
+  const nameInput = document.getElementById('name').value;
+  const reviewInput = document.getElementById('text').value;
+  const ratingInput = document.getElementById('rating').value;
+
+  // perform additional validation as required
+
+  // creates an object with the review data
+  const reviewData = {
+    name: nameInput,
+    review: reviewInput,
+    rating: ratingInput
   };
-  
-  document
-    .querySelector('.register-form')
-    .addEventListener('submit', registerFormHandler);
+console.log(reviewData)
+  // use the reviewData as needed
+  // for example, you can store it in an array or make an API call to save the review on the server
+  // optionally, display a success message or perform any other post-submission actions
+}
+
+
+document.getElementById('reviewForm').addEventListener('submit', submitReview);
   

@@ -1,26 +1,34 @@
-// function to handle review submission
-function submitReview(event) {
+function createUser() {
   event.preventDefault();
 
   // form values
-  const nameInput = document.getElementById('name').value;
-  const reviewInput = document.getElementById('text').value;
-  const ratingInput = document.getElementById('rating').value;
+  const emailInput = document.getElementById('email-register').value;
+  const nameInput = document.getElementById('name-register').value;
+  const password1 = document.getElementById('password-register-a').value;
+  const password2 = document.getElementById('password-register-b').value;
+  const submitbutton = getElementById('submitbutton')
 
   // perform additional validation as required
+// Check if both passwords are the same
+if (password1 !== password2){
+  document.getElementById('password-reigster-a').preview="Error: Passwords do not match.";
+  let password1 = "";
+  let password2 = "";
+  return;
+};
 
   // creates an object with the review data
-  const reviewData = {
+  const newUserData = {
+    email: emailInput,
     name: nameInput,
-    review: reviewInput,
-    rating: ratingInput
+    password: verifiedPassword,
   };
-console.log(reviewData)
+console.log(newUserData)
   // use the reviewData as needed
   // for example, you can store it in an array or make an API call to save the review on the server
   // optionally, display a success message or perform any other post-submission actions
 }
 
 
-document.getElementById('reviewForm').addEventListener('submit', submitReview);
+submitbutton.addEventListener('click', createUser);
   

@@ -15,6 +15,11 @@ router.get('/login', (req, res) => {
   res.render('login');
 });
 
+// Employee login
+router.get('/Employee_Login', (req, res) => {
+  res.render('emplogin');
+});
+
 // Create Account page route
 router.get('/signup', function(req, res, next) {
   res.render('create');

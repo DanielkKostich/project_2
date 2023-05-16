@@ -1,10 +1,21 @@
 const router = require('express').Router();
-const { User } = require('../../models');
+const { Customer } = require('../../models');
+
+router.get('/', async (req, res) => {
+  try {
+    const custData = await Customer.findAll({
+      attributes: {exclude: ['password']}
+    });
+    res.status(200).json(custData);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+  })
 
 router.post('/login', async (req, res) => {
   try {
     // Find the user who matches the posted e-mail address
-    const userData = await User.findOne({ where: { email: req.body.email } });
+    const userData = await Customer.findOne({ where: { email: req.body.email } });
 
     if (!userData) {
       res

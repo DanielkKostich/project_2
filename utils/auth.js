@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 var express = require('express');
 var passport = require('passport');
 var LocalStrategy = require('passport-local');
@@ -79,3 +80,10 @@ router.post('/signup', function(req, res, next) {
 });
 
 module.exports = router;
+=======
+const withAuth = (req, res, next) => {
+    next();
+};
+
+module.exports = withAuth;
+>>>>>>> 0488c9dab69f35323710a7e99decaf5650360419

@@ -1,5 +1,6 @@
 const express = require('express');
 const session = require('express-session');
+<<<<<<< HEAD
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 const bcrypt = require('bcryptjs');
@@ -99,3 +100,50 @@ app.post('/register', async (req, res) => {
 app.listen(port, () => {
   console.log(`Server running on port ${port}.`);
 });
+=======
+const exphbs = require('express-handlebars');
+const routes = require('./controllers');
+const helpers = require('./utils/helpers');
+const cors = require('cors');
+
+const sequelize = require('./config/connection');
+const SequelizeStore = require('connect-session-sequelize')(session.Store);
+
+const app = express();
+const PORT = process.env.PORT || 3001;
+
+const hbs = exphbs.create({ helpers });
+
+const sess = {
+    secret: 'Super secret secret',
+    cookie: {
+      maxAge: 300000,
+      httpOnly: true,
+      secure: false,
+      sameSite: 'strict',
+    },
+    resave: false,
+    saveUninitialized: true,
+    store: new SequelizeStore({
+      db: sequelize
+    })
+  };
+  
+  app.use(session(sess));
+  app.use(cors({ origin: '*', methods: 'PUT'}));
+  
+  // Inform Express.js on which template engine to use
+  app.engine('handlebars', hbs.engine);
+  app.set('view engine', 'handlebars');
+  
+  app.use(express.json());
+  app.use(express.urlencoded({ extended: true }));
+  app.use(express.static(path.join(__dirname, 'public')));
+  
+  app.use(routes);
+  
+  sequelize.sync({ force: false }).then(() => {
+    app.listen(PORT, () => console.log('Now listening at http://localhost:3001/'));
+  });
+  //test2
+>>>>>>> 0488c9dab69f35323710a7e99decaf5650360419

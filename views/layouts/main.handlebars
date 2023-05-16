@@ -4,30 +4,73 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>User Registry</title>
-  <link rel="stylesheet" href="/css/jass.css">
+  <title>FresHair</title>
+  <link rel="stylesheet" type="text/css" href="/css/jass.css">
+  <link rel="stylesheet" type="text/css" href="/css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
 <body>
-  <header class="display-flex justify-space-between align-center p-2">
-    <h1>
-      User Registry
-    </h1>
-    <!-- Only display the logout button if the user is logged in -->
-    {{#if logged_in}}
-    <nav>
-      <button class="btn" id="logout">logout</button>
-    </nav>
-    {{/if}}
-  </header>
-  <main class="container container-fluid mt-5">
-    {{{ body }}}
-  </main>
-  <footer>
-      
-  </footer>
+  <div class="flex-column justify-space-around">
+    <header >
+      <div class="banner" style="background-color: rgb(149, 110, 185);">
+      <h1 class="flex-row centered" id="logo">
+        <div id="logocard">
+        <img src="../../images/logo.png" style="width:50px;">
+        <a href="/" class="unadornedAnchor">FresHair</a>
+        </div>
+      </h1>
+      <nav>
+      <div style="justify-content:space-evenly;" id="wideScreenButtons" class="flex-row navigation">
+        <a href="/" class="navbutton unadornedAnchor">home</a>
+        <!-- Conditionally render login or logout links -->
+        {{#if logged_in}}
+        <a class="navbutton" href="/profile">profile</a> 
+        <button class="no-button navbutton" id="logout" class="unadornedAnchor"><logout></button>
+        {{else}}
+        <a href="/login" class=" navbutton unadornedAnchor">login</a>
+        <a href="/Employee_Login" class="navbutton unadornedAnchor">Employee Login</a>
+        {{/if}}
+        <a href="/" class="navbutton unadornedAnchor">Schedule</a>
+        <a href="/" class="navbutton unadornedAnchor">Contact Us</a>
+        <a href="/reviews" class="navbutton unadornedAnchor">Reviews</a>
+        {{#if logged_in}}
+        <a href="/" id="logoutNav" class="logbutton unadornedAnchor"><img style="width:20px; padding:5px 0;" src="https://icons.iconarchive.com/icons/iconsmind/outline/256/Key-icon.png"></a>
+        {{/if}}
+        </div>
 
-  <!-- Only include the logout script if the user is logged in -->
+        <div style="justify-content:space-evenly;" id="smallScreenButton" class="flex-row navigation">
+        <a href="/" class="navbutton unadornedAnchor">home</a>
+        </div>
+
+      </nav>
+      </div>
+      </div>
+    </header>
+    <div class="flex-row mt-5">
+    <aside>
+      <div class="flex-column yarr" >
+        Disable your ad-blocker.
+      </div>
+    </aside>
+    <div class="flex-column mainsection">
+    <main class="container container-fluid mt-5">
+      <!-- Render the sub layout -->
+      {{{ body }}}
+    </main>
+    </div>
+    <aside>
+      <div class="flex-column yarr">
+        Disable your ad-blocker.
+      </div>
+    </aside>
+    </div>
+    <footer>
+      
+    </footer>
+  </div>
+
+  <!-- Render script for logged in users only -->
   {{#if logged_in}}
   <script src="/js/logout.js"></script>
   {{/if}}

@@ -58,4 +58,17 @@ router.post('/logout', (req, res) => {
   }
 });
 
+router.post('/createuser', async (req, res) => {
+  try {
+    const { email, name, password } = req.body; // Assuming the email, name, and password are sent in the request body
+
+    // Create a new customer entry
+    const newCustomer = await Customer.create({ email, name, password });
+
+    res.status(200).json(newCustomer);
+  } catch (err) {
+    res.status(400).json(err);
+  }
+});
+
 module.exports = router;

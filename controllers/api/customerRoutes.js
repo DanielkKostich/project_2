@@ -36,19 +36,18 @@ router.post('/login', async (req, res) => {
 
     // Create session variables based on the logged in user
     req.session.save(() => {
-      req.session.user_id = userData.id;
-      req.session.logged_in = true;
-      
-      res.json({ user: userData, message: 'You are now logged in!' });
+      req.session.user_id = userData.cusid;
+      req.session.loggedIn = true;
+      res.render('homepage');
     });
 
   } catch (err) {
-    res.status(400).json(err);
+    res.redirect('/400');
   }
 });
 
 router.post('/logout', (req, res) => {
-  if (req.session.logged_in) {
+  if (req.session.loggedIn) {
     // Remove the session variables
     req.session.destroy(() => {
       res.status(204).end();
@@ -65,9 +64,13 @@ router.post('/createuser', async (req, res) => {
     // Create a new customer entry
     const newCustomer = await Customer.create({ email, name, password });
 
-    res.status(200).json(newCustomer);
+    req.session.save(() => {
+      req.session.user_id = newCustomer.cusid;
+      req.session.loggedIn = true;  
+      res.render('homepage');
+    });
   } catch (err) {
-    res.status(400).json(err);
+    res.redirect('/400');
   }
 });
 

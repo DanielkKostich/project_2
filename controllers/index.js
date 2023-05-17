@@ -6,7 +6,6 @@ const { User } = require('../models');
 const withAuth = require('../utils/auth');
 const apiRoutes = require('./api');
 const homeRoutes = require('./homeRoutes');
-const authRoutes = require('./authRoutes');
 const app = express();
 
 // Middleware
@@ -59,7 +58,6 @@ passport.deserializeUser((id, done) => {
 // Routes
 app.use('/api', apiRoutes);
 app.use('/', homeRoutes);
-app.use('/', authRoutes);
 
 app.get('/dashboard', withAuth, (req, res) => {
   res.render('dashboard');

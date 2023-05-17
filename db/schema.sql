@@ -30,3 +30,12 @@ CREATE TABLE appointments (
   PRIMARY KEY (id),
   FOREIGN KEY (customer_id) REFERENCES customers(id)
 );
+
+CREATE TABLE reviews (
+  id INT NOT NULL AUTO_INCREMENT,
+
+  -- customer_id INT NOT NULL,
+
+  PRIMARY KEY (id)
+  -- FOREIGN KEY (customer_id) REFERENCES customers(id)
+);

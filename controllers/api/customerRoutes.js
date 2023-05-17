@@ -66,7 +66,7 @@ router.post('/createuser', async (req, res) => {
     req.session.save(() => {
       req.session.user_id = newCustomer.cusid;
       req.session.loggedIn = true;  
-      res.json(newCustomer);
+      res.redirect('/');
     });
   } catch (err) {
     res.json(err);

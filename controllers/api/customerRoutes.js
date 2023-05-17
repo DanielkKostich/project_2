@@ -1,6 +1,5 @@
 const router = require('express').Router();
 const { Customer } = require('../../models');
-
 router.get('/', async (req, res) => {
   try {
     const custData = await Customer.findAll({
@@ -59,18 +58,18 @@ router.post('/logout', (req, res) => {
 
 router.post('/createuser', async (req, res) => {
   try {
-    const { email, name, password } = req.body; // Assuming the email, name, and password are sent in the request body
+    const { email, username, name, password } = req.body; // Assuming the email, name, and password are sent in the request body
 
     // Create a new customer entry
-    const newCustomer = await Customer.create({ email, name, password });
+    const newCustomer = await Customer.create({ email, username, name, password });
 
     req.session.save(() => {
       req.session.user_id = newCustomer.cusid;
       req.session.loggedIn = true;  
-      res.render('homepage');
+      res.json(newCustomer);
     });
   } catch (err) {
-    res.redirect('/400');
+    res.json(err);
   }
 });
 

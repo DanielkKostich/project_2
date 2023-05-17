@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const { Customer } = require('../../models');
+const { Review } = require('../../models');
 router.get('/', async (req, res) => {
   try {
     const custData = await Customer.findAll({
@@ -35,9 +36,11 @@ router.post('/login', async (req, res) => {
 
     // Create session variables based on the logged in user
     req.session.save(() => {
-      req.session.user_id = userData.cusid;
       req.session.loggedIn = true;
-      res.render('homepage');
+
+      res
+        .status(200)
+        .json({ user: userData, message: 'You are now logged in!' });
     });
 
   } catch (err) {
@@ -69,6 +72,19 @@ router.post('/createuser', async (req, res) => {
       res.redirect('/');
     });
   } catch (err) {
+    res.json(err);
+  }
+});
+
+
+
+router.post('/createreview', async (req, res) => {
+  try {
+    const { name, review, rating } = req.body;
+    const newReview = await Review.create({ name, review, rating});
+    console.log('Review saved successfully:', newReview);
+    
+  } catch (err){
     res.json(err);
   }
 });

@@ -3,12 +3,24 @@ const Employee = require('./Employee');
 const Review = require('./Review')
 const Appointment = require('./Appointment');
 
-Customer.belongsToMany(Employee, {
-    through: 'review'
-})
+Customer.hasMany(Review, {
+    foreignKey: 'customer_cusid',
+    as: 'reviews',
+  });
+  
+  Employee.hasMany(Review, {
+    foreignKey: 'employee_empid',
+    as: 'reviews',
+  });
 
-Employee.belongsToMany(Customer, {
-    through: 'review',
-})
+Review.belongsTo(Customer, {
+    foreignKey: 'customer_cusid',
+    as: 'customer',
+  });
+  
+  Review.belongsTo(Employee, {
+    foreignKey: 'employee_empid',
+    as: 'employee',
+  });
 
 module.exports = { Customer, Employee, Review, Appointment };

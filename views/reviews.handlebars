@@ -1,11 +1,11 @@
 <h2>Reviews</h2>
 <br>
-
+{{#each reviews as |review|}}
 <div class="container border">
   <div class="flex-row">
     <img src="../../images/logo.png" alt="Avatar" class="circle">
     <div>
-      <t class="name">Stylist Name</t>
+      <t class="name">{{review.employee.name}}</t>
       <br>
       <span class="fa fa-star checked"></span>
       <span class="fa fa-star checked"></span>
@@ -18,14 +18,14 @@
     <br>
     <span class="card-header ml-5">Great service!</span>
     <div class="card-content ml-3">
-      Service was good. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nemo magnam obcaecati, iste molestias quia dicta voluptates placeat sunt cum excepturi debitis? Nesciunt explicabo, eveniet doloremque reiciendis nemo culpa in impedit?
+      {{review.review}}
       <br>
       <br>
     </div>
     <div class="flex-row">
       <img src="../../images/logo.png" alt="Avatar" class="circle ml-5">
       <div>
-        <t class="name">Customer Name</t>
+        <t class="name">{{review.customer.username}}</t>
         <br>
         Verified Customer
       </div>
@@ -33,3 +33,4 @@
   </div>
   <br>
 </div>
+{{/each}}

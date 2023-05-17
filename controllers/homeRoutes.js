@@ -21,6 +21,7 @@ router.get('/login', (req, res) => {
   res.render('login', {loggedIn: req.session.loggedIn,});
 });
 
+
 // Employee login
 router.get('/Employee_Login', (req, res) => {
   res.render('emplogin', {loggedIn: req.session.loggedIn,});

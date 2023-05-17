@@ -1,6 +1,6 @@
-const { CustEmp } = require('../models');
+const { Review } = require('../models');
 
-const custEmpData = [
+const reviewData = [
   {
     customer_id: 1,
     employee_id: 2,
@@ -47,6 +47,6 @@ const custEmpData = [
   },
 ];
 
-const seedCustEmp = () => CustEmp.bulkCreate(custEmpData);
+const seedReview = () => Review.bulkCreate(reviewData);
 
-module.exports = seedCustEmp;
+module.exports = seedReview;

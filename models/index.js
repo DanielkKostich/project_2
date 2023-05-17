@@ -1,10 +1,13 @@
-const Sequelize = require('sequelize');
-require('dotenv').config();
+const Customer = require('./Customer');
+const Employee = require('./Employee');
+const Appointment = require('./Appointment')
 
-const sequelize = new Sequelize(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PASSWORD, {
-    host: process.env.DB_HOST,
-    dialect: 'mysql',
-    port: process.env.DB_PORT
-});
+Customer.belongsToMany(Employee, {
+    through: 'appointment'
+})
 
-module.exports = sequelize;
+Employee.belongsToMany(Customer, {
+    through: 'appointment',
+})
+
+module.exports = { Customer, Employee, Appointment };

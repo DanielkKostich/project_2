@@ -2,7 +2,39 @@ const express = require('express');
 const router = express.Router();
 const { Customer } = require('../models');
 const withAuth = require('../utils/auth');
+const Review = require ('../public/js/Review-model');
 
+async function submitReview(event) {
+  // event.preventDefault();
+
+  // const nameInput = document.getElementById('name').value;
+  // const reviewInput = document.getElementById('text').value;
+  // const ratingInput = document.getElementById('rating').value;
+  // const sentenceInput = document.getElementById('sentence').value;
+
+  const reviewData = {
+    name: "nameInput",
+    review: "reviewInput",
+    rating: "ratingInput",
+    sentence: "sentenceInput"
+  };
+console.log(reviewData)
+  try {
+    
+    const createdReview = await Review.create(reviewData);
+
+    if (createdReview) {
+      console.log('Review saved successfully:', createdReview);
+      
+    } else {
+      console.log('Failed to save the review.');
+     
+    }
+  } catch (error) {
+    
+    console.error('Error saving review:', error);
+  }
+}
 // Main page route
 router.get('/', (req, res) => {
   console.log('serving the homepage');
@@ -31,8 +63,15 @@ router.get('/reviews', function(req, res, next) {
   res.render('reviews');
 });
 
-router.get('/reviews/create', function(req, res, next) {
-  res.render('create-reviews');
+router.get('/reviews/create', async function(req, res, next) {
+  const reviewData = {
+    name: "nameInput",
+    review: "reviewInput",
+    rating: "ratingInput",
+    sentence: "sentenceInput"
+  };
+  const createdReview = await Review.create(reviewData);
+  res.render('create-reviews',{createdReview});
 });
 
 module.exports = router;

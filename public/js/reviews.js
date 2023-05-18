@@ -1,4 +1,4 @@
-const Review = require('../../models/Review.js');
+// import Review from './Review-model.js';
 
 async function submitReview(event) {
   event.preventDefault();

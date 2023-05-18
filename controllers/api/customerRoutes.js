@@ -1,26 +1,28 @@
-const router = require('express').Router();
-const { Customer } = require('../../models');
-
-router.get('/', async (req, res) => {
+const router = require("express").Router();
+const { Customer } = require("../../models");
+const { Review } = require("../../models");
+router.get("/", async (req, res) => {
   try {
     const custData = await Customer.findAll({
-      attributes: {exclude: ['password']}
+      attributes: { exclude: ["password"] },
     });
     res.status(200).json(custData);
   } catch (err) {
     res.status(500).json(err);
   }
-  })
+});
 
-router.post('/login', async (req, res) => {
+router.post("/login", async (req, res) => {
   try {
     // Find the user who matches the posted e-mail address
-    const userData = await Customer.findOne({ where: { email: req.body.email } });
+    const userData = await Customer.findOne({
+      where: { email: req.body.email },
+    });
 
     if (!userData) {
       res
         .status(400)
-        .json({ message: 'Incorrect email or password, please try again' });
+        .json({ message: "Incorrect email or password, please try again" });
       return;
     }
 
@@ -30,23 +32,24 @@ router.post('/login', async (req, res) => {
     if (!validPassword) {
       res
         .status(400)
-        .json({ message: 'Incorrect email or password, please try again' });
+        .json({ message: "Incorrect email or password, please try again" });
       return;
     }
 
     // Create session variables based on the logged in user
     req.session.save(() => {
-      req.session.user_id = userData.cusid;
       req.session.loggedIn = true;
-      res.render('homepage');
-    });
 
+      res
+        .status(200)
+        .json({ user: userData, message: "You are now logged in!" });
+    });
   } catch (err) {
-    res.redirect('/400');
+    res.redirect("/400");
   }
 });
 
-router.post('/logout', (req, res) => {
+router.post("/logout", (req, res) => {
   if (req.session.loggedIn) {
     // Remove the session variables
     req.session.destroy(() => {
@@ -57,20 +60,35 @@ router.post('/logout', (req, res) => {
   }
 });
 
-router.post('/createuser', async (req, res) => {
+router.post("/createuser", async (req, res) => {
   try {
-    const { email, name, password } = req.body; // Assuming the email, name, and password are sent in the request body
+    const { email, username, name, password } = req.body; // Assuming the email, name, and password are sent in the request body
 
     // Create a new customer entry
-    const newCustomer = await Customer.create({ email, name, password });
+    const newCustomer = await Customer.create({
+      email,
+      username,
+      name,
+      password,
+    });
 
     req.session.save(() => {
       req.session.user_id = newCustomer.cusid;
-      req.session.loggedIn = true;  
-      res.render('homepage');
+      req.session.loggedIn = true;
+      res.redirect("/");
     });
   } catch (err) {
-    res.redirect('/400');
+    res.json(err);
+  }
+});
+
+router.post("/createreview", async (req, res) => {
+  try {
+    const { name, review, rating } = req.body;
+    const newReview = await Review.create({ name, review, rating });
+    console.log("Review saved successfully:", newReview);
+  } catch (err) {
+    res.json(err);
   }
 });
 

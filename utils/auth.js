@@ -20,9 +20,10 @@ var router = express.Router();
 //   });
 // }));
 
-router.get('/login', function(req, res, next) {
-  res.render('login');
-});
+//Already have this in customerroutes. 
+// router.get('/login', function(req, res, next) {
+//   res.render('login');
+// });
 
 passport.serializeUser(function(user, cb) {
   process.nextTick(function() {
@@ -45,16 +46,18 @@ router.post('/login/password', passport.authenticate('local', {
   failureRedirect: '/login'
 }));
 
-router.post('/logout', function(req, res, next) {
-  req.logout(function(err) {
-    if (err) { return next(err); }
-    res.redirect('/');
-  });
-});
+//We already have these in our homeroutes and customerroutes
 
-router.get('/signup', function(req, res, next) {
-  res.render('signup');
-});
+// router.post('/logout', function(req, res, next) {
+//   req.logout(function(err) {
+//     if (err) { return next(err); }
+//     res.redirect('/');
+//   });
+// });
+
+// router.get('/signup', function(req, res, next) {
+//   res.render('signup');
+// });
 
 // router.post('/signup', function(req, res, next) {
 //   var salt = bcrypt.randomBytes(16);

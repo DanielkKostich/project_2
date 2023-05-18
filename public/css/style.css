@@ -349,10 +349,20 @@ background: linear-gradient(175deg, rgba(203,196,170,1) 0%, rgba(164,157,131,1) 
     font-weight: 400;
     font-size: 1.2rem;
 }
+.card-centered{
+    margin-top: 5px;
+    margin-bottom: -15px;
+    padding-left: 50px;
+}
 .d-flex{
     display: flex;
     justify-content: center;
     padding: 10px;
+}
+.d-flexleft{
+    display: flex;
+    justify-content: left;
+    padding: 10px; 
 }
 .flexleft {
     justify-content: start;
@@ -386,6 +396,64 @@ background: linear-gradient(175deg, rgba(203,196,170,1) 0%, rgba(164,157,131,1) 
     font-size: 14px;
     margin-top: 5px;
   }
+
+.background-grey {
+    background-color: #a0a0a0;
+}
+.background-white{
+    background-color: #FFFFFF;
+}
+.thumbnail {
+    width: 50px; 
+    height: 50px; 
+}
+.thumbnailier{
+    width: 20px;
+    height: 20px;
+}
+.card {
+    border-radius: 10px; /* Rounded corners */
+    margin-bottom: 20px; /* Add some space between cards */
+  }
+  
+  .card-header,
+  .card-body,
+  .card-footer {
+    background-color: #dddbd2  ; /* Color scheme for header, body, and footer */
+    padding: 10px; /* Add padding to the header, body, and footer */
+  }
+  .card-header-but-not-blue{
+    background-color: #c2bfae ;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+  }
+  
+  .card-footer {
+    background-color: #868474; /* Different background color for the footer */
+    height: 30px; /* Adjust the height of the footer */
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+  }
+  
+  .card-header .card-title,
+  .card-footer .card-subtitle {
+    margin: 0; /* Remove margin for the header title and footer subtitle */
+  }
+  
+  .card-header .card-title {
+    text-align: left; /* Align the header title to the left */
+  }
+  
+  .card-footer {
+    display: flex;
+    align-items: right;
+    justify-content: right;
+  }
+  .card-footer img{
+    margin-right: 15px;
+  }
+  
+
 
 
 @media screen and (max-width:1700px){

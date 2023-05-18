@@ -35,6 +35,41 @@ const customerData = [
     email: 'aiqueen@msn.com',
     password: 'cyberdyne101',
   },
+  {
+    name: 'Jack Skellington',
+    email: 'jskell@hotmail.com',
+    password: 'Skelly1698',
+  },
+  {
+    name: 'Garfield',
+    email: 'gfield@yahoo.com',
+    password: 'Iforgot1212',
+  },
+  {
+    name: 'Tony Hawk',
+    email: 'thawk@gmail.com',
+    password: 'Whatsthis3443',
+  },
+  {
+    name: 'Daniel Kostich',
+    email: 'Mysticvert@yahoo.com',
+    password: 'Password1234',
+  },
+  {
+    name: 'Penolope Smith',
+    email: 'pen28@yahoo.com',
+    password: 'Pilot1672',
+  },
+  {
+    name: 'Brittney Koch',
+    email: 'bdawg@yahoo.com',
+    password: 'Lala9012',
+  },
+  {
+    name: 'Ally Bright',
+    email: 'ablight@yahoo.com',
+    password: 'LiGhthouse46',
+  },
 ];
 
 const seedCustomers = () => Customer.bulkCreate(customerData, {

@@ -1,7 +1,7 @@
 const logoutHandler = async (event) => {
   event.preventDefault();
 
-  const response = await fetch('/api/users/logout', {
+  const response = await fetch('/api/customers/logout', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
   });
@@ -13,6 +13,4 @@ const logoutHandler = async (event) => {
   }
 };
 
-document
-  .querySelector('.logout-link')
-  .addEventListener('click', logoutHandler);
+document.getElementById('logoutNav').addEventListener('click', logoutHandler);

@@ -4,6 +4,7 @@ const seedAppointments = require('./appointment-seeds');
 const seedCustEmp = require('./cust-emp-seeds');
 
 const sequelize = require('../config/connection');
+const seedReviews = require('./review-seeds');
 
 
 const seedDatabase = async () => {
@@ -19,8 +20,8 @@ const seedDatabase = async () => {
   await seedAppointments();
   console.log('\n----- APPOINTMENTS SEEDED ----- \n')
 
-  await seedCustEmp();
-  console.log('\n----- CUSTOMER EMPLOYEES SEEDED -----\n');
+  await seedReviews();
+  console.log('\n----- CUSTOMER REVIEWS SEEDED -----\n');
   process.exit(0);
 };
 

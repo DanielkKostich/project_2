@@ -1,7 +1,6 @@
 const seedCustomers = require('./customer-seeds');
 const seedEmployees = require('./employee-seeds');
 const seedAppointments = require('./appointment-seeds');
-const seedCustEmp = require('./cust-emp-seeds');
 
 const sequelize = require('../config/connection');
 const seedReviews = require('./review-seeds');

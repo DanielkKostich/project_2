@@ -28,6 +28,9 @@ const employeeData = [
   },
 ];
 
-const seedEmployees = () => Employee.bulkCreate(employeeData);
+const seedEmployees = () => Employee.bulkCreate(employeeData, {
+  individualHooks: true,
+  returning: true,
+});
 
 module.exports = seedEmployees;

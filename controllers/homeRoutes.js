@@ -35,4 +35,13 @@ router.get('/reviews/create', function(req, res, next) {
   res.render('create-reviews');
 });
 
+//meet the stylist page route
+router.get('/stylist', function(req, res, next) {
+  res.render('stylist');
+});
+// hours Route
+router.get('/hours', function(req, res, ) {
+  res.render('hours');
+});
+
 module.exports = router;

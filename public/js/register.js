@@ -8,10 +8,12 @@ function createUser(event) {
   const emailInput = document.getElementById('email').value;
   const nameInput = document.getElementById('name').value;
   const passwordInput = document.getElementById('Password_a').value;
+  const usernameInput = document.getElementById('username').value;
 
   // Create an object to store the form data
   const formData = {
     email: emailInput,
+    username: usernameInput,
     name: nameInput,
     password: passwordInput
   };
@@ -37,6 +39,8 @@ function validateForm(event) {
   var emailValue = emailField.value;
   var nameField = document.getElementById('name');
   var nameValue = nameField.value;
+  var usernameField = document.getElementById('username');
+  var usernameValue = usernameField.value;
 
   // Get the password values
   var passwordValue_a = password_a.value;

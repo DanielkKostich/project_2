@@ -7,19 +7,10 @@ const withAuth = require('../utils/auth');
 const apiRoutes = require('./api');
 const homeRoutes = require('./homeRoutes');
 const app = express();
+const path = require('path');
 
 // Middleware
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
-app.use(express.static('public'));
-app.use(
-  session({
-    secret: 'keyboard cat',
-    resave: false,
-    saveUninitialized: true,
-    cookie: { secure: false }
-  })
-);
+
 
 // Passport configuration
 passport.use(

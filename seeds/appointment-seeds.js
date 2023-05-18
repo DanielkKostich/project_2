@@ -22,6 +22,13 @@ const appointmentData = [
     customer_id: 2,
     notes: null,
   },
+  {
+    date: '2024-01-07',
+    time: '16:11:00',
+    empid: 0,
+    cusid: 1,
+    notes: null,
+  },
 ];
 
 const seedAppointments = () => Appointment.bulkCreate(appointmentData);

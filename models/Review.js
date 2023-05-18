@@ -22,25 +22,22 @@ Review.init(
     review: {
       type: DataTypes.STRING,
     },
-    customer_id: {
+    sentence:{
+      type: DataTypes.STRING,
+    },
+    
+    customer_cusid: {
       type: DataTypes.INTEGER,
       references: {
         model: 'customer',
         key: 'cusid',
       },
     },
-    employee_id: {
+    employee_empid: {
       type: DataTypes.INTEGER,
       references: {
         model: 'employee',
         key: 'empid',
-      },
-    },
-    appointment_id: {
-      type: DataTypes.INTEGER,
-      references:{
-        model: 'appointment',
-        key: 'aptid'
       },
     },
   },

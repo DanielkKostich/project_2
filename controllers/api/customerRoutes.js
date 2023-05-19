@@ -39,6 +39,8 @@ router.post("/login", async (req, res) => {
     // Create session variables based on the logged in user
     req.session.save(() => {
       req.session.loggedIn = true;
+      req.session.username = userData.username;
+      req.session.user_id = userData.cusid;
 
       res
         .status(200)
@@ -74,6 +76,7 @@ router.post("/createuser", async (req, res) => {
 
     req.session.save(() => {
       req.session.user_id = newCustomer.cusid;
+      req.session.username = newCustomer.username;
       req.session.loggedIn = true;
       res.redirect("/");
     });

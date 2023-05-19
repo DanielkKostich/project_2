@@ -40,6 +40,10 @@ main{
     z-index: 0;
 }
 
+#home-image {
+    width: 100%;
+}
+
 .unadornedAnchor {
     text-decoration: none !important;
     color:black;
@@ -301,6 +305,7 @@ background: linear-gradient(175deg, rgba(203,196,170,1) 0%, rgba(164,157,131,1) 
 }
 .mainsection{
     width: 80%;
+
 }
 .navigation{
     justify-content: center;

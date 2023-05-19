@@ -106,7 +106,9 @@ router.get('/stylist', function(req, res, next) {
 });
 // hours Route
 router.get('/hours', function(req, res, ) {
-  res.render('hours');
+  res.render('hours', {
+    loggedIn: req.session.loggedIn,
+  });
 });
 
 module.exports = router;

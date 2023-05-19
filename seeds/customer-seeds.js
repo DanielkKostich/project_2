@@ -36,36 +36,43 @@ const customerData = [
     password: 'cyberdyne101',
   },
   {
+    username: 'jskell',
     name: 'Jack Skellington',
     email: 'jskell@hotmail.com',
     password: 'Skelly1698',
   },
   {
+    username: 'gfield',
     name: 'Garfield',
     email: 'gfield@yahoo.com',
     password: 'Iforgot1212',
   },
   {
+    username: 'thawk',
     name: 'Tony Hawk',
     email: 'thawk@gmail.com',
     password: 'Whatsthis3443',
   },
   {
+    username: 'mysticvert',
     name: 'Daniel Kostich',
     email: 'Mysticvert@yahoo.com',
     password: 'Password1234',
   },
   {
+    username: 'pen28',
     name: 'Penolope Smith',
     email: 'pen28@yahoo.com',
     password: 'Pilot1672',
   },
   {
+    username: 'bdawg',
     name: 'Brittney Koch',
     email: 'bdawg@yahoo.com',
     password: 'Lala9012',
   },
   {
+    username: 'ablight',
     name: 'Ally Bright',
     email: 'ablight@yahoo.com',
     password: 'LiGhthouse46',

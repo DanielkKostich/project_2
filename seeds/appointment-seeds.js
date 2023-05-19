@@ -25,8 +25,8 @@ const appointmentData = [
   {
     date: '2024-01-07',
     time: '16:11:00',
-    empid: 0,
-    cusid: 1,
+    employee_id: 4,
+    customer_id: 1,
     notes: null,
   },
 ];

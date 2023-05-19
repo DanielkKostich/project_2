@@ -41,6 +41,11 @@ const employeeData = [
     email: 'bholla@yahoo.com',
     password: 'Goodday',
   },
+  {
+    name: 'Tiffany Giles',
+    email: 'tdizzle@gmail.com',
+    password: 'Yass!!!23',
+  },
 ];
 
 const seedEmployees = () => Employee.bulkCreate(employeeData, {

@@ -118,7 +118,9 @@ router.get('/hours', function(req, res, ) {
 });
 
 router.get('/prices', function(req, res, ) {
-  res.render('prices');
+  res.render('prices', {
+    loggedIn: req.session.loggedIn,
+  });
 });
 
 module.exports = router;

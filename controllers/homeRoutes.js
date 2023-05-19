@@ -84,4 +84,8 @@ router.get('/hours', function(req, res, ) {
   res.render('hours');
 });
 
+router.get('/prices', function(req, res, ) {
+  res.render('prices');
+});
+
 module.exports = router;

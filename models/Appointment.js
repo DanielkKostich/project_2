@@ -24,7 +24,7 @@ Appointment.init(
       allowNull: false,
       references: {
         model: 'employee',
-        key: 'empid',
+        key: 'employee_id',
       },
     },
     customer_id:{
@@ -32,7 +32,7 @@ Appointment.init(
       allowNull: false,
       references: {
         model: 'customer',
-        key: 'cusid',
+        key: 'customer_id',
       },
     },
     notes:{

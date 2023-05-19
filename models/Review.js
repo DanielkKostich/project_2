@@ -26,18 +26,18 @@ Review.init(
       type: DataTypes.STRING,
     },
     
-    customer_cusid: {
+    customer_id: {
       type: DataTypes.INTEGER,
       references: {
         model: 'customer',
-        key: 'cusid',
+        key: 'customer_id',
       },
     },
-    employee_empid: {
+    employee_id: {
       type: DataTypes.INTEGER,
       references: {
         model: 'employee',
-        key: 'empid',
+        key: 'employee_id',
       },
     },
   },

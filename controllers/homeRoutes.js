@@ -97,16 +97,16 @@ router.get('/reviews', async (req, res) => {
 
 
 router.get('/reviews/create', function(req, res, next) {
-  res.render('create-reviews');
+  res.render('create-reviews', {loggedIn: req.session.loggedIn});
 });
 
 //meet the stylist page route
 router.get('/stylist', function(req, res, next) {
-  res.render('stylist');
+  res.render('stylist', {loggedIn: req.session.loggedIn});
 });
 // hours Route
 router.get('/hours', function(req, res, ) {
-  res.render('hours');
+  res.render('hours', {loggedIn: req.session.loggedIn});
 });
 
 module.exports = router;

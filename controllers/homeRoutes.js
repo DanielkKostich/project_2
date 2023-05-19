@@ -31,13 +31,38 @@ router.get('/Employee_Login', (req, res) => {
 
 // Create Account page route
 router.get('/signup', function(req, res, next) {
-  res.render('create');
+  res.render('create', {loggedIn: req.session.loggedIn,});
+});
+
+// Customer Profiles route
+router.get('/customer/:username', async (req, res) => {
+  try {
+    const { username } = req.params; 
+    const dbCustomerData= await Customer.findOne({ where: { username: username } });
+    const customer = dbCustomerData.get({ plain: true });
+    res.render('profile', { customer, loggedIn: req.session.loggedIn });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
+//User profile route
+router.get('/profile', async (req, res) => {
+  try {
+    if (!req.session.loggedIn) {
+      return res.status(400).json({ error: 'Not logged in' });
+    }
+
+    const username = req.session.username;
+    res.redirect(`/customer/${username}`);
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
 });
 
 // Reviews page route
-
-
-
 router.get('/reviews', async (req, res) => {
   try {
     const dbReviewData = await Review.findAll({
@@ -72,16 +97,18 @@ router.get('/reviews', async (req, res) => {
 
 
 router.get('/reviews/create', function(req, res, next) {
-  res.render('create-reviews');
+  res.render('create-reviews', {loggedIn: req.session.loggedIn});
 });
 
 //meet the stylist page route
 router.get('/stylist', function(req, res, next) {
-  res.render('stylist');
+  res.render('stylist', {loggedIn: req.session.loggedIn});
 });
 // hours Route
 router.get('/hours', function(req, res, ) {
-  res.render('hours');
+  res.render('hours', {
+    loggedIn: req.session.loggedIn,
+  });
 });
 
 router.get('/prices', function(req, res, ) {

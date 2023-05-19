@@ -10,7 +10,7 @@ class Customer extends Model {
 
 Customer.init(
   {
-    cusid: {
+    customer_id: {
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true,

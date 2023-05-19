@@ -93,11 +93,17 @@ router.get('/reviews', async (req, res) => {
   }
 });
 
-
-
-
-router.get('/reviews/create', function(req, res, next) {
-  res.render('create-reviews', {loggedIn: req.session.loggedIn});
+router.get('/reviews/create', async (req, res) => {
+  try{
+    const dbEmployeeData = await Employee.findAll();
+    const employees = dbEmployeeData.map((employee) =>
+    employee.get({ plain: true })
+    );
+    res.render('create-reviews', { employees ,customer_id: req.session.user_id,loggedIn: req.session.loggedIn});
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
 });
 
 //meet the stylist page route

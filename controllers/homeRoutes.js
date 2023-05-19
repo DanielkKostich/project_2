@@ -117,4 +117,8 @@ router.get('/hours', function(req, res, ) {
   });
 });
 
+router.get('/prices', function(req, res, ) {
+  res.render('prices');
+});
+
 module.exports = router;

@@ -1,23 +1,24 @@
 <h2>Reviews</h2>
 <br>
-{{#each reviews as |review|}}
-<div class="card">
+<div id="rolodex">
+{{#each (slice (sort reviews "id" "desc") 0 5) as |review|}}
+<div id="card" class="card">
   <div class="card-header-but-not-blue d-flexleft align-items-center">
     <img src="../../images/logo.png" alt="Avatar" class="thumbnail">
-    <div class="ml-2 ">
+    <div class="ml-2">
       <h5 class="card-title">{{review.customer.username}}</h5>
       <div class="star-ratings">
         {{{starRating review.rating}}}
       </div>
     </div>
     <div class="card-centered">
-    <h2>{{review.sentence}}</h2>
+      <h2>{{review.sentence}}</h2>
     </div>
   </div>
   <div class="card-body text-center">
-    <p class="card-text">{{review.review}}</p>
+    <p class="card-text">"{{review.review}}"</p>
   </div>
-  <div class="card-footer bg-secondary text-light d-flex align-items-center justify-content-between">
+  <div class="card-footer text-light d-flex justify-content-between">
     <img src="../../images/logo.png" alt="Avatar" class="thumbnailier">
     <div>
       <h6 class="card-subtitle font-weight-bold">for stylist {{review.employee.name}}</h6>
@@ -25,3 +26,16 @@
   </div>
 </div>
 {{/each}}
+</div>
+{{#if (gt reviews.length 5)}}
+<div class="centered mb-5">
+<button id="showMoreButton">Show More</button>
+</div>
+{{/if}}
+{{#if loggedIn}}
+<div class="row centered">
+  <div style="background-color:#868474; margin-bottom:30px; padding: 10px;border-top-right-radius: 10px;border-top-left-radius: 10px;border-bottom-right-radius: 10px;border-bottom-left-radius: 10px;">
+    <a href="/reviews/create" style="text-decoration:none;color:white;font-weight:900;font-size:30px;">Submit a review!</a>
+  </div>
+</div>
+{{/if}}

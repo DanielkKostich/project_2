@@ -85,11 +85,12 @@ router.post("/createuser", async (req, res) => {
   }
 });
 
+// Sending a post request here will now require every part of a review but should display it correctly. 
 router.post("/createreview", async (req, res) => {
   try {
-    const { name, review, rating } = req.body;
-    const newReview = await Review.create({ name, review, rating });
-    console.log("Review saved successfully:", newReview);
+    const { rating, review, sentence, customer_id, employee_id } = req.body;
+    const newReview = await Review.create({ rating, review, sentence, customer_id, employee_id });
+    res.redirect("/reviews");
   } catch (err) {
     res.json(err);
   }

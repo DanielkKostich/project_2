@@ -1,19 +1,78 @@
-<h2>Give us a review!</h2>
+{{#if loggedIn}}
+
+
+
+{{!-- <h2>Give us a review!</h2>
 <br>
 <form id="reviewForm">
-  <label for="name">Name:</label>
-  <input type="text" name="name" id="name" required>
-<br>
   <label for="sentence">Short sentence:</label>
   <input type="text" name="sentence" id="sentence" required></textarea>
 <br>
   <label for="text">Review:</label>
-  <input type="text" name="text" id="text" required></textarea>
+  <input type="text" name="text" id="review" required></textarea>
 <br>
   <label for="rating">Rating:</label>
   <input type="number" name="rating" id="rating" min="1" max="5" required>
 <br>
+<label for="employee">Who cut your hair?</label>
+ <select name="employee_id" id="employee_id">
+      {{#each employees as |employee|}}
+        <option value="{{employee.employee_id}}">{{employee.name}}</option>
+      {{/each}}
+    </select>
+  <br>
   <button type="submit">Submit Review</button>
-</form>
+</form> --}}
 
+
+{{!-- Card container --}}
+<div class="contentCard container">
+    {{!-- Header Section --}}
+    <div class="contentCardHeader row centered pt-1">
+        <h2>Give us a review!</h2>
+    </div>
+    {{!-- Body Section --}}
+    <div class="contentCardBody centered row">
+        <div class="contentCardMain col-sm m-5">
+        <form id="reviewForm" class="text-left">
+  <label for="sentence">Title:</label>
+  <input type="text" name="sentence" id="sentence" required></textarea>
+<br>
+  <label for="text">Review:</label>
+  <input type="text" name="text" id="review" required></textarea>
+<br><div class="row" style="padding-left:15px; margin-top: 5px;">
+  <label for="rating">Rating:</label>
+  {{!-- <input type="number" name="rating" id="rating" min="1" max="5" required> --}}
+  {{!-- Found this rating system here: https://codepen.io/hesguru/pen/BaybqXv --}}
+  <div class="rate"  style="margin-top: -7px;">
+    <input type="radio" id="star5" name="rate" value="5" />
+    <label for="star5" title="text">5 stars</label>
+    <input type="radio" id="star4" name="rate" value="4" />
+    <label for="star4" title="text">4 stars</label>
+    <input type="radio" id="star3" name="rate" value="3" />
+    <label for="star3" title="text">3 stars</label>
+    <input type="radio" id="star2" name="rate" value="2" />
+    <label for="star2" title="text">2 stars</label>
+    <input type="radio" id="star1" name="rate" value="1" />
+    <label for="star1" title="text">1 star</label>
+  </div>
+  </div>
+<br>
+<label for="employee">Who cut your hair?</label>
+ <select class="form-select" name="employee_id" id="employee_id">
+      {{#each employees as |employee|}}
+        <option value="{{employee.employee_id}}">{{employee.name}}</option>
+      {{/each}}
+    </select>
+  <br>
+  <button id="submitbutton" type="submit">Submit Review</button>
+</form>
+        </div>
+    </div>
+</div>
+
+<script>
+    var customerId = {{ customer_id }};
+</script>
 <script src="../../js/review.js" type="module"></script>
+{{/if}}

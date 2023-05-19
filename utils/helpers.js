@@ -24,5 +24,30 @@ module.exports = {
 
     return new Handlebars.SafeString(stars);
   },
+  slice: function (array, start, end) {
+    return array.slice(start, end);
+  },
+  gt: function (value1, value2) {
+    if (value1 > value2) {
+      return (value1);
+    }
+    return (value2);
+  },
+  sort: function (array, property, order) {
+    var sortedArray = array.slice();
+    sortedArray.sort(function(a, b) {
+      var valueA = a[property];
+      var valueB = b[property];
+      if (order === 'desc') {
+        return valueB - valueA;
+      } else {
+        return valueA - valueB;
+      }
+    });
+    return sortedArray;
+  }
 };
 Handlebars.registerHelper('starRating', module.exports.starRating);
+Handlebars.registerHelper('slice', module.exports.slice);
+Handlebars.registerHelper('gt', module.exports.gt);
+Handlebars.registerHelper('sort', module.exports.sort);

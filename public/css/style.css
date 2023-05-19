@@ -1,3 +1,8 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
 body{
 background-color: beige;
 }
@@ -59,6 +64,12 @@ a:hover{
     align-content: center;
     text-align: center;
 }
+.text-center {
+    text-align: center;
+}
+.text-left {
+    text-align: left;
+}
 .pl-5{
     padding-left: 15px;
 }
@@ -70,8 +81,7 @@ a:hover{
 }
 
 .navbutton{
-    width:150px;
-    height:35px;
+    width:20%;
     border-top: 0;
     border-bottom: 0;
     border-left: 1px solid #857e64;
@@ -419,6 +429,7 @@ background: linear-gradient(175deg, rgba(203,196,170,1) 0%, rgba(164,157,131,1) 
 .card {
     border-radius: 10px; /* Rounded corners */
     margin-bottom: 20px; /* Add some space between cards */
+    border: none;
   }
   
   .card-header,
@@ -426,6 +437,7 @@ background: linear-gradient(175deg, rgba(203,196,170,1) 0%, rgba(164,157,131,1) 
   .card-footer {
     background-color: #dddbd2  ; /* Color scheme for header, body, and footer */
     padding: 10px; /* Add padding to the header, body, and footer */
+    border:none !important;
   }
   .card-header-but-not-blue{
     background-color: #c2bfae ;
@@ -477,46 +489,53 @@ background: linear-gradient(175deg, rgba(203,196,170,1) 0%, rgba(164,157,131,1) 
     border-bottom-right-radius: 10px;
 }
 
-.contentCard{
+.contentCard {
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
     margin-top: 70px;
     width: 100%;
-    display: flex; 
-    flex-direction: column; 
-}
-.contentCardHeader{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .contentCardHeader {
     background-color: #c2bfae;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
     padding-left: 15px;
-}
-.contentCardBody{
+  }
+  
+  .contentCardBody {
     background-color: #dddbd2;
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
-    display: flex; 
+    display: flex;
     flex-direction: row;
-}
-.contentCardMain {
+  }
+  
+  .contentCardMain {
     flex: 1;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     text-align: center; /* Center-align the text within the container */
-}
-
-.contentCardMain a {
+  }
+  
+  .contentCardMain a {
     margin-top: 10px; /* Add some spacing between the paragraph and the anchor */
-}
-.contentCardAside {
-    align-items: flex-end; 
-    text-align: right; 
-}
-.contentCardAsideImage {
+  }
+  
+  .contentCardAside {
+    align-items: flex-end;
+    text-align: right;
+  }
+  
+  .contentCardAsideImage {
     width: 100%;
     height: auto;
     max-height: 100%; /* Limit the height to the container's height */
@@ -525,9 +544,50 @@ background: linear-gradient(175deg, rgba(203,196,170,1) 0%, rgba(164,157,131,1) 
     border-top-right-radius: 10px;
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
+  }
+
+.rate {
+    float: left;
+    height: 46px;
+    padding: 0 10px;
+}
+.rate:not(:checked) > input {
+    position:absolute;
+    top:-9999px;
+}
+.rate:not(:checked) > label {
+    float:right;
+    width:1em;
+    overflow:hidden;
+    white-space:nowrap;
+    cursor:pointer;
+    font-size:30px;
+    color:#ccc;
+}
+.rate:not(:checked) > label:before {
+    content: '★ ';
+}
+.rate > input:checked ~ label {
+    color: #ffc700;    
+}
+.rate:not(:checked) > label:hover,
+.rate:not(:checked) > label:hover ~ label {
+    color: #deb217;  
+}
+.rate > input:checked + label:hover,
+.rate > input:checked + label:hover ~ label,
+.rate > input:checked ~ label:hover,
+.rate > input:checked ~ label:hover ~ label,
+.rate > label:hover ~ input:checked ~ label {
+    color: #c59b08;
 }
 
-
+.form-select{
+    width: 30%;
+}
+.flex-nowrap{
+    flex-wrap: nowrap;
+}
 
 
 @media screen and (max-width:1700px){

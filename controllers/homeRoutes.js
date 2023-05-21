@@ -1,15 +1,24 @@
 const express = require('express');
 const router = express.Router();
 const { Customer, Review, Employee } = require('../models');
-const withAuth = require('../utils/auth');
+const withAuth = require('../controllers/api/localStrategy');
 
 // Main page route
 router.get('/', async (req, res) => {
   try {
-    res.render('homepage', {
-      loggedIn: req.session.loggedIn,
-    });
-  } catch (err){
+    if (req.user) {
+      req.session.loggedIn = true;
+      const { username } = req.user; // Access the username property from the serialized user object
+      res.render('homepage', {
+        loggedIn: req.user,
+        username: username, // Pass the username to the template
+      });
+    } else {
+      res.render('homepage', {
+        loggedIn: false,
+      });
+    }
+  } catch (err) {
     console.log(err);
     res.status(500).json(err);
   }
@@ -18,20 +27,20 @@ router.get('/', async (req, res) => {
 
 // Login page route
 router.get('/login', (req, res) => {
-  res.render('login', {loggedIn: req.session.loggedIn,});
+  res.render('login', {loggedIn: req.user,});
 });
 
 
 // Employee login
 router.get('/Employee_Login', (req, res) => {
-  res.render('emplogin', {loggedIn: req.session.loggedIn,});
+  res.render('emplogin', {loggedIn: req.user,});
 });
 
 // post route for creating account
 
 // Create Account page route
 router.get('/signup', function(req, res, next) {
-  res.render('create', {loggedIn: req.session.loggedIn,});
+  res.render('create', {loggedIn: req.user,});
 });
 
 // Customer Profiles route
@@ -40,7 +49,7 @@ router.get('/customer/:username', async (req, res) => {
     const { username } = req.params; 
     const dbCustomerData= await Customer.findOne({ where: { username: username } });
     const customer = dbCustomerData.get({ plain: true });
-    res.render('profile', { customer, loggedIn: req.session.loggedIn });
+    res.render('profile', { customer, loggedIn: req.user });
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
@@ -85,7 +94,7 @@ router.get('/reviews', async (req, res) => {
     );
     res.render('reviews', {
       reviews,
-      loggedIn: req.session.loggedIn,
+      loggedIn: req.user,
     });
   } catch (err) {
     console.log(err);
@@ -99,7 +108,7 @@ router.get('/reviews/create', async (req, res) => {
     const employees = dbEmployeeData.map((employee) =>
     employee.get({ plain: true })
     );
-    res.render('create-reviews', { employees ,customer_id: req.session.user_id,loggedIn: req.session.loggedIn});
+    res.render('create-reviews', { employees ,customer_id: req.session.user_id,loggedIn: req.user});
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
@@ -108,12 +117,18 @@ router.get('/reviews/create', async (req, res) => {
 
 //meet the stylist page route
 router.get('/stylist', function(req, res, next) {
-  res.render('stylist', {loggedIn: req.session.loggedIn});
+  res.render('stylist', {loggedIn: req.user});
 });
 // hours Route
 router.get('/hours', function(req, res, ) {
   res.render('hours', {
-    loggedIn: req.session.loggedIn,
+    loggedIn: req.user,
+  });
+});
+
+router.get('/prices', function(req, res, ) {
+  res.render('prices', {
+    loggedIn: req.user,
   });
 });
 

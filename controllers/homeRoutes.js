@@ -107,8 +107,20 @@ router.get('/reviews/create', async (req, res) => {
 });
 
 //meet the stylist page route
-router.get('/stylist', function(req, res, next) {
-  res.render('stylist', {loggedIn: req.session.loggedIn});
+router.get('/stylist', async (req, res) => {
+  try {
+    const employeeData = await Employee.findAll();
+
+    const employees = employeeData.map((employee) => 
+    employee.get({ plain: true })
+    );
+    res.render('stylist', {
+      employees,
+      loggedIn: req.session.loggedIn});
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
 });
 // hours Route
 router.get('/hours', function(req, res, ) {

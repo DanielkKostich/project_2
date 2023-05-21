@@ -3,83 +3,15 @@
   <img src="../images/stylist logo.jpg">
 </div>
 
-<div class="position-relative">
+{{!-- <div class="position-relative"> --}}
 
-  
-  
- 
-   
-<span class="flex-row justify-space-between"> 
-    <img src="../images/hayley_tomaso.webp" class="stylist-photo">
-    <img src="../images/april_betts.jpg" class="stylist-photo">
-    <img src="../images/anna_banana.jpg" class="stylist-photo">
-  </span>
-<span class="flex-row justify-space-between"> 
-   {{!-- might have to add &nbsp; 's to make correct spacing  --}}
- <p class="name">&nbsp; &nbsp; Hayley Tomas</p>
-  <p class="name">April Betts</p>
-   <p class="name">Anna Banana &nbsp; &nbsp;</p>
-</span>
-
-<span class="flex-row justify-space-between"> 
-    <img src="../images/breanne_hollister.jpg" class="stylist-photo">
-    <img src="../images/jamie-bannon.jpg" class="stylist-photo">
-    <img src="../images/Brett-Dorrian.jpg" class="stylist-photo">
-  </span>
-<span class="flex-row justify-space-between"> 
-   {{!-- might have to add &nbsp; 's to make correct spacing  --}}
- <p class="name"> Breanne Hollister</p>
-  <p class="name">Jamie Bannon &nbsp;</p>
-   <p class="name">Brett Dorrian &nbsp; &nbsp;</p>
-</span>
-
-
-
-    
-<p>Anna Banana</p>
-  <p>Email:<a href="hay@gmail.com">Gmail</a> </p>
- <p>Email: <a href="mailto:shopbanana@msn.com">shopbanana@msn.com</a> </p>
-
-
-
-
-
-
-
-
-  <div class="position-absolute top-0 start-50 translate-middle-x"><img src="../images/april_betts.wepb">
-
-    <p>April Betts</p>
-    <p>Email: <a href="mailto:abett6489@gmail.com">abett6489@gmail.com</a> </p>
+<div class="stylist-container">
+  {{#each employees as |employee|}}
+  <div class="stylist-card">
+    <img src={{employee.photo}} class="stylist-photo" alt={{employee.name}}+" headshot">
+    <p class="name">{{employee.name}}</p>
+    <p class="email">{{employee.email}}</p>
   </div>
-  <div class="position-absolute top-0 end-0"> <img src="../images/breanne_hollister.jpg">
-<p>Breanne Hollister</p>
-<p> Email: <a href="mailto:bholla@yahoo.com">bholla@yahoo.com</a> </p>
-  </div>
-  <div class="position-absolute top-50 start-0 translate-middle-y"> <img src="../images/chadd_shalehen.jpg">
-<p>Chadd Shalehen</p>
-<p>Email:<a href="mailto:chaddd@hotmail.com">chaddd@hotmail.com</a> </p>
-  </div>
-  <div class="position-absolute top-50 start-50 translate-middle"> <img src="../images/clarita_marcel.jpg">
-<p>Clarita Marcel</p>
-<p>Email:<a href="mailto:clarclar@aol.com">clarclar@aol.com</a> </p>
-  </div>
-  <div class="position-absolute top-50 end-0 translate-middle-y"> <img src="../images/hayley_tomaso.jpg">
-<p>Hayley Tomaso</p>
-<p>Email:<a href="mailto:hay@gmail.com">hay@gmail.com</a> </p>
-  </div>
-  <div class="position-absolute bottom-0 start-0"> <img src="../images/ozzy_parris.jpg">
-<p>Ozzy Parris</p>
-<p>Email:<a href="mailto:ozzyp@yahoo.com">ozzyp@yahoo.com</a> </p>
-  </div>
-  <div class="position-absolute bottom-0 start-50 translate-middle-x"><img src="../images/tiffany_giles.jpeg">
-<p>Tiffany Giles</p>
-<p>Email:<a href="mailto:tdizzle@gmail.com">tdizzle@gmail.com</a> </p>
-  </div>
-  <div class="position-absolute bottom-0 end-0"> <img src="../images/tom_petty.jpg">
-  <p>Tom Petty</p>
-  <p> Email: <a href="mailto:tpet1324@yahoo.com">tpet1324@yahoo.com</a> </p>
-  <div class="position-absolute bottom-0 end-0"> <img src="../images/anna_banana.webp">
-
-  </div>
+  {{/each}}
 </div>
+  

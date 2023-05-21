@@ -43,6 +43,9 @@ Employee.init(
       type: DataTypes.STRING,
       allowNull: true,
     },
+    photo: {
+      type: DataTypes.TEXT,
+    }
   },
   {
     hooks: {

@@ -35,7 +35,24 @@ Open your web browser and visit http://localhost:3000 to access the application.
 
 ## Usage
 
-LOREM IPSUM DOLOR SIT AMET, CONSECTETUR ADIPISICING ELIT, SED DO EIUSMOD TEMPOR INCIDIDUNT UT LABORE ET DOLORE MAGNA ALIQUA. 
+Click on the links in the navbar to navigate to different areas in the website. From left to right, the links are:
+-Home
+-Login
+-Employee Login
+-Sign-Up
+-Hours
+-Stylists
+-Services
+-Reviews
+
+![Home Page View](public/images/01%20Home.png)
+![Customer Login Page](public/images/02%20Login.png)
+![Employee Login Page](public/images/03%20Employee%20Login.png)
+![Create Account Page](public/images/04%20Create%20Account.png)
+![Hours Page](public/images/05%20Hours.png)
+![Stylists Page](public/images/06%20Stylists.png)
+![Services Page](public/images/07%20Services.png)
+![Reviews Page](public/images/08%20Reviews.png)
 
 ## Credits
 

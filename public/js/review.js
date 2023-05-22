@@ -6,8 +6,8 @@ const reviewFormHandler = async (event) => {
   const employee_id = document.getElementById('employee_id').value;
   const customer_id = customerId;
 
-
   if (rating, review, sentence, customer_id, employee_id) {
+    
     // Send the e-mail and password to the server
     const response = await fetch('/api/customers/createreview', {
       method: 'POST',
@@ -21,7 +21,6 @@ const reviewFormHandler = async (event) => {
     }
   }
 }
-
 
 
 

@@ -28,16 +28,19 @@ passport.use(new LocalStrategy(
 ));
 
 
-passport.serializeUser(function(user, cb) {
-  cb(null, user.id);
+passport.serializeUser(function(user, done) {
+  return done(null, {
+    id: user.customer_id,
+    username: user.username,
+  });
 });
 
-passport.deserializeUser(async function(id, cb) {
+passport.deserializeUser(async function(id, done) {
   try {
     const user = await Customer.findByPk(id);
-    cb(null, user);
+    done(null, user);
   } catch (err) {
-    cb(err);
+    done(err);
   }
 });
 

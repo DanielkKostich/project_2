@@ -77,7 +77,7 @@ router.get('/profile', async (req, res) => {
       return res.status(400).json({ error: 'Not logged in' });
     }
 
-    const username = req.session.username;
+    const username = req.session.passport.user.username;
     res.redirect(`/customer/${username}`);
   } catch (err) {
     console.log(err);
@@ -122,7 +122,9 @@ router.get('/reviews/create', async (req, res) => {
     const employees = dbEmployeeData.map((employee) =>
       employee.get({ plain: true })
     );
-    res.render('create-reviews', { employees, customer_id: req.session.user_id, loggedIn: req.user });
+    const customerfetch= await Customer.findOne({ where: { username: req.session.passport.user.username } });
+    cusid = customerfetch.customer_id;
+    res.render('create-reviews', { employees, customer_id: cusid, loggedIn: req.user });
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
@@ -130,9 +132,31 @@ router.get('/reviews/create', async (req, res) => {
 });
 
 // meet the stylist page route
-router.get('/stylist', function (req, res, next) {
-  res.render('stylist', { loggedIn: req.user });
-});
+// router.get('/stylist', function (req, res, next) {
+//   res.render('stylist', { loggedIn: req.user });
+// });
+
+
+router.get('/stylist', async (req, res) => {
+  try {
+    const dbStylistData = await Employee.findAll();
+
+    if (!dbStylistData) {
+      // Stylist not found, render 404 error page
+      res.status(404).render('error', { message: 'Customer profile not found', loggedIn: req.user });
+      return;
+    }
+    const stylists = dbStylistData.map((stylist) =>
+      stylist.get({ plain: true })
+    );
+
+    res.render('stylist', { stylists, loggedIn: req.user });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }});
+
+
 // hours Route
 router.get('/hours', function (req, res) {
   res.render('hours', {

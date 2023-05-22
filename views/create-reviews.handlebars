@@ -1,30 +1,4 @@
 {{#if loggedIn}}
-
-
-
-{{!-- <h2>Give us a review!</h2>
-<br>
-<form id="reviewForm">
-  <label for="sentence">Short sentence:</label>
-  <input type="text" name="sentence" id="sentence" required></textarea>
-<br>
-  <label for="text">Review:</label>
-  <input type="text" name="text" id="review" required></textarea>
-<br>
-  <label for="rating">Rating:</label>
-  <input type="number" name="rating" id="rating" min="1" max="5" required>
-<br>
-<label for="employee">Who cut your hair?</label>
- <select name="employee_id" id="employee_id">
-      {{#each employees as |employee|}}
-        <option value="{{employee.employee_id}}">{{employee.name}}</option>
-      {{/each}}
-    </select>
-  <br>
-  <button type="submit">Submit Review</button>
-</form> --}}
-
-
 {{!-- Card container --}}
 <div class="contentCard container">
     {{!-- Header Section --}}
@@ -38,8 +12,8 @@
   <label for="sentence">Title:</label>
   <input type="text" name="sentence" id="sentence" required></textarea>
 <br>
-  <label for="text">Review:</label>
-  <input type="text" name="text" id="review" required></textarea>
+  <label for="review">Review:</label>
+<textarea name="text" rows="1" cols="100" id="review" required></textarea>
 <br><div class="row" style="padding-left:15px; margin-top: 5px;">
   <label for="rating">Rating:</label>
   {{!-- <input type="number" name="rating" id="rating" min="1" max="5" required> --}}
@@ -65,14 +39,14 @@
       {{/each}}
     </select>
   <br>
-  <button id="submitbutton" type="submit">Submit Review</button>
+  <button id="submitbutton" value="{{customer_id}}" type="submit">Submit Review</button>
 </form>
         </div>
     </div>
 </div>
 
-<script>
-    var customerId = {{ customer_id }};
-</script>
 <script src="../../js/review.js" type="module"></script>
+<script>
+    var customerId = {{customer_id}};
+</script>
 {{/if}}

@@ -130,9 +130,31 @@ router.get('/reviews/create', async (req, res) => {
 });
 
 // meet the stylist page route
-router.get('/stylist', function (req, res, next) {
-  res.render('stylist', { loggedIn: req.user });
-});
+// router.get('/stylist', function (req, res, next) {
+//   res.render('stylist', { loggedIn: req.user });
+// });
+
+
+router.get('/stylist', async (req, res) => {
+  try {
+    const dbStylistData = await Employee.findAll();
+
+    if (!dbStylistData) {
+      // Stylist not found, render 404 error page
+      res.status(404).render('error', { message: 'Customer profile not found', loggedIn: req.user });
+      return;
+    }
+    const stylists = dbStylistData.map((stylist) =>
+      stylist.get({ plain: true })
+    );
+
+    res.render('stylist', { stylists, loggedIn: req.user });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }});
+
+
 // hours Route
 router.get('/hours', function (req, res) {
   res.render('hours', {

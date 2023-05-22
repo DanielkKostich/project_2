@@ -325,6 +325,7 @@ a:hover{
     font-weight: 200;
     font-size: 25px;
     padding: 2px 0;
+    text-align: center;
 }
 .logbutton{
     display: block;

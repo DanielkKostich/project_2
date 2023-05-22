@@ -1,3 +1,6 @@
+var passport = require('passport');
+var LocalStrategy = require('../../controllers/api/localStrategy');
+
 const loginFormHandler = async (event) => {
   // Stop the browser from submitting the form so we can do so with JavaScript
   event.preventDefault();
@@ -8,17 +11,29 @@ const loginFormHandler = async (event) => {
 
   if (email && password) {
     // Send the e-mail and password to the server
-    const response = await fetch('/api/customers/login', {
-      method: 'POST',
-      body: JSON.stringify({ email, password }),
-      headers: { 'Content-Type': 'application/json' },
-    });
+    // const response = await fetch('/api/passport/login', {
+    //   method: 'POST',
+    //   body: JSON.stringify({ email, password }),
+    //   headers: { 'Content-Type': 'application/json' },
+    // });
 
-    if (response.ok) {
-      document.location.replace('/');
-    } else {
-      alert('Failed to log in');
-    }
+    // if (response.ok) {
+    //   document.location.replace('/');
+    // } else {
+    //   alert('Failed to log in');
+    // }
+
+
+
+    router.post('/login/password',
+  passport.authenticate('local', { failureRedirect: '/login', failureMessage: true }),
+  function(req, res) {
+    res.redirect('/customer/' + req.user.username);
+  });
+
+
+
+
   }
 };
 

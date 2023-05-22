@@ -2,8 +2,9 @@ const express = require('express');
 const session = require('express-session');
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
-const { User } = require('../models');
+const { Customer } = require('../models');
 const withAuth = require('../utils/auth');
+const bcrypt = require('bcrypt');
 const apiRoutes = require('./api');
 const homeRoutes = require('./homeRoutes');
 const app = express();
@@ -19,12 +20,13 @@ passport.use(
       usernameField: 'email'
     },
     function (email, password, done) {
-      User.findOne({ where: { email: email } })
-        .then((user) => {
+      Customer.findOne({ where: { email: email } })
+        .then(async (user) => {
           if (!user) {
             return done(null, false, { message: 'Incorrect email.' });
           }
-          if (!user.validPassword(password)) {
+          const validPassword = await bcrypt.compare(password, user.password);
+          if (!validPassword) {
             return done(null, false, { message: 'Incorrect password.' });
           }
           return done(null, user);
@@ -39,7 +41,7 @@ passport.serializeUser((user, done) => {
 });
 
 passport.deserializeUser((id, done) => {
-  User.findByPk(id)
+  Customer.findByPk(id)
     .then((user) => {
       done(null, user);
     })

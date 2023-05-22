@@ -17,11 +17,6 @@ const app = express();
 const port = process.env.PORT || 3001;
 
 // Set up middleware
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-app.use(express.static(path.join(__dirname, 'public')));
-app.use(routes);
-
 const sess = {
   secret: 'Super secret secret',
   cookie: {
@@ -36,8 +31,11 @@ const sess = {
     db: sequelize
   })
 };
-
 app.use(session(sess));
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(express.static(path.join(__dirname, 'public')));
+app.use(routes);
 app.use(cors({ origin: '*', methods: 'PUT'}));
 app.use(passport.initialize());
 app.use(passport.authenticate('session'));

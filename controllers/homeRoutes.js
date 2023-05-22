@@ -1,53 +1,76 @@
 const express = require('express');
 const router = express.Router();
+const passport = require('passport');
 const { Customer, Review, Employee } = require('../models');
-const withAuth = require('../utils/auth');
+const withAuth = require('../controllers/api/localStrategy');
+
+// Middleware for checking if the user is authenticated
+const isAuthenticated = (req, res, next) => {
+  if (req.isAuthenticated()) {
+    return next();
+  }
+  res.redirect('/login'); // Redirect to the login page if not authenticated
+};
 
 // Main page route
 router.get('/', async (req, res) => {
   try {
-    res.render('homepage', {
-      loggedIn: req.session.loggedIn,
-    });
-  } catch (err){
-    console.log(err);
-    res.status(500).json(err);
-  }
-});
-
-
-// Login page route
-router.get('/login', (req, res) => {
-  res.render('login', {loggedIn: req.session.loggedIn,});
-});
-
-
-// Employee login
-router.get('/Employee_Login', (req, res) => {
-  res.render('emplogin', {loggedIn: req.session.loggedIn,});
-});
-
-// post route for creating account
-
-// Create Account page route
-router.get('/signup', function(req, res, next) {
-  res.render('create', {loggedIn: req.session.loggedIn,});
-});
-
-// Customer Profiles route
-router.get('/customer/:username', async (req, res) => {
-  try {
-    const { username } = req.params; 
-    const dbCustomerData= await Customer.findOne({ where: { username: username } });
-    const customer = dbCustomerData.get({ plain: true });
-    res.render('profile', { customer, loggedIn: req.session.loggedIn });
+    if (req.user) {
+      req.session.loggedIn = true;
+      const { username } = req.user; // Access the username property from the serialized user object
+      res.render('homepage', {
+        loggedIn: req.user,
+        username: username, // Pass the username to the template
+      });
+    } else {
+      res.render('homepage', {
+        loggedIn: false,
+      });
+    }
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
   }
 });
 
-//User profile route
+// Login page route
+router.get('/login', (req, res) => {
+  res.render('login', { loggedIn: req.user });
+});
+
+// Employee login
+router.get('/Employee_Login', (req, res) => {
+  res.render('emplogin', { loggedIn: req.user });
+});
+
+// post route for creating account
+
+// Create Account page route
+router.get('/signup', function (req, res, next) {
+  res.render('create', { loggedIn: req.user });
+});
+
+// Customer Profiles route
+router.get('/customer/:username', async (req, res) => {
+  try {
+    const { username } = req.params;
+    const dbCustomerData = await Customer.findOne({ where: { username: username } });
+
+    if (!dbCustomerData) {
+      // Customer not found, render 404 error page
+      res.status(404).render('error', { message: 'Customer profile not found', loggedIn: req.user });
+      return;
+    }
+
+    const customer = dbCustomerData.get({ plain: true });
+    res.render('profile', { customer, loggedIn: req.user });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
+// User profile route
 router.get('/profile', async (req, res) => {
   try {
     if (!req.session.loggedIn) {
@@ -85,7 +108,7 @@ router.get('/reviews', async (req, res) => {
     );
     res.render('reviews', {
       reviews,
-      loggedIn: req.session.loggedIn,
+      loggedIn: req.user,
     });
   } catch (err) {
     console.log(err);
@@ -94,45 +117,39 @@ router.get('/reviews', async (req, res) => {
 });
 
 router.get('/reviews/create', async (req, res) => {
-  try{
+  try {
     const dbEmployeeData = await Employee.findAll();
     const employees = dbEmployeeData.map((employee) =>
-    employee.get({ plain: true })
+      employee.get({ plain: true })
     );
-    res.render('create-reviews', { employees ,customer_id: req.session.user_id,loggedIn: req.session.loggedIn});
+    res.render('create-reviews', { employees, customer_id: req.session.user_id, loggedIn: req.user });
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
   }
 });
 
-//meet the stylist page route
-router.get('/stylist', async (req, res) => {
-  try {
-    const employeeData = await Employee.findAll();
-
-    const employees = employeeData.map((employee) => 
-    employee.get({ plain: true })
-    );
-    res.render('stylist', {
-      employees,
-      loggedIn: req.session.loggedIn});
-  } catch (err) {
-    console.log(err);
-    res.status(500).json(err);
-  }
+// meet the stylist page route
+router.get('/stylist', function (req, res, next) {
+  res.render('stylist', { loggedIn: req.user });
 });
 // hours Route
-router.get('/hours', function(req, res, ) {
+router.get('/hours', function (req, res) {
   res.render('hours', {
-    loggedIn: req.session.loggedIn,
+    loggedIn: req.user,
   });
 });
 
-router.get('/prices', function(req, res, ) {
+router.get('/prices', function (req, res) {
   res.render('prices', {
-    loggedIn: req.session.loggedIn,
+    loggedIn: req.user,
   });
 });
+
+// Login post route
+router.post('/login', passport.authenticate('local', {
+  successRedirect: '/dashboard', // Redirect to the dashboard on successful login
+  failureRedirect: '/login', // Redirect back to the login page on failure
+}));
 
 module.exports = router;

@@ -12,7 +12,7 @@
 </head>
 
 <body>
-  <div class="header_nowrap justify-space-around">
+  <div class="flex-column justify-space-around">
     <header >
       <div class="banner" style="background-color: rgb(149, 110, 185);">
       <h1 class="flex-row centered" id="logo">
@@ -51,23 +51,23 @@
       </div>
     </header>
     <br>
-    {{!-- <div class="flex-row flex-nowrap mt-5">
+    <div class="flex-row flex-nowrap mt-5">
     <aside>
       <div class="flex-column" >
         <span class="yarr">Disable your ad-blocker. </span>
       </div>
-    </aside> --}}
+    </aside>
     <div class="flex-column mainsection">
     <main class="container container-fluid mt-5">
       <!-- Render the sub layout -->
       {{{ body }}}
     </main>
     </div>
-    {{!-- <aside>
+    <aside>
       <div class="flex-column">
         <span class="yarr">Disable your ad-blocker.</span>
       </div>
-    </aside> --}}
+    </aside>
     </div>
     <footer>
       

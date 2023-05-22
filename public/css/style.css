@@ -109,7 +109,7 @@ background: linear-gradient(175deg, rgba(203,196,170,1) 0%, rgba(164,157,131,1) 
     height: 600px;
 }
 .mainsection{
-    max-width: 100%;
+    width: 80%;
 }
 .navigation{
     justify-content: center;
@@ -125,26 +125,6 @@ background: linear-gradient(175deg, rgba(203,196,170,1) 0%, rgba(164,157,131,1) 
     padding: 10px;
     border-radius: 25px;
 }
-.stylist-photo{
-    width: 250px;
-    height: 350px;
-    max-width: 250px;
-    max-height: 350px;
-    border-radius: 50px !important;
-    margin-top: 10px;
-    object-fit: cover;
-    
-}
-@media screen and (max-width:1100px){
-.stylist-photo{
-    width: 200px;
-    height: 250px;
-    max-width: 200px;
-    max-height: 250px;
-}
-
-
-}
 
 @media screen and (max-width:1700px){
     #logo {
@@ -153,9 +133,9 @@ background: linear-gradient(175deg, rgba(203,196,170,1) 0%, rgba(164,157,131,1) 
     nav {
         margin-top: 2px;
     }
-    /* .mainsection{
+    .mainsection{
         width: 75%;
-    } */
+    }
 }
 /* Adjustments for screens up to 768px wide */
 @media screen and (max-width: 768px) {
@@ -207,10 +187,10 @@ background: linear-gradient(175deg, rgba(203,196,170,1) 0%, rgba(164,157,131,1) 
       width: 95%;
       margin: 10px auto;
     }
-    /* .mainsection {
+    .mainsection {
       width: 95%;
       margin: 10px auto;
-    } */
+    }
   }
   
   /* Adjustments for screens up to 360px wide */
@@ -333,7 +313,10 @@ background: linear-gradient(175deg, rgba(203,196,170,1) 0%, rgba(164,157,131,1) 
     width: 120px;
     height: 600px;
 }
+.mainsection{
+    width: 80%;
 
+}
 .navigation{
     justify-content: center;
     flex-wrap: nowrap;
@@ -354,11 +337,7 @@ background: linear-gradient(175deg, rgba(203,196,170,1) 0%, rgba(164,157,131,1) 
 }
 
 /*------------------------------*/
-.header-nowrap{
-    display: flex;
-    flex-direction: column;
-    flex-wrap: nowrap !important;
-}
+
 .circle{
     border-radius: 50% !important;
     height: 50px !important;
@@ -618,9 +597,9 @@ background: linear-gradient(175deg, rgba(203,196,170,1) 0%, rgba(164,157,131,1) 
     nav {
         margin-top: 2px;
     }
-    /* .mainsection{
+    .mainsection{
         width: 75%;
-    } */
+    }
 }
 /* Adjustments for screens up to 768px wide */
 @media screen and (max-width: 768px) {
@@ -672,10 +651,10 @@ background: linear-gradient(175deg, rgba(203,196,170,1) 0%, rgba(164,157,131,1) 
       width: 95%;
       margin: 10px auto;
     }
-    /* .mainsection {
+    .mainsection {
       width: 95%;
       margin: 10px auto;
-    } */
+    }
   }
   
   /* Adjustments for screens up to 360px wide */
@@ -697,9 +676,3 @@ background: linear-gradient(175deg, rgba(203,196,170,1) 0%, rgba(164,157,131,1) 
       font-size: 0.6rem;
     }
   }
-
-.stylist-container {
-    display: grid;
-    grid-template-columns: 33.33% 33.33% 33.33%;
-    text-align: center;
-}

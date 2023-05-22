@@ -2,7 +2,7 @@ const express = require('express');
 const session = require('express-session');
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
-const { User } = require('../models');
+const { Customer } = require('../models'); // Import the Customer model
 const withAuth = require('../utils/auth');
 const apiRoutes = require('./api');
 const homeRoutes = require('./homeRoutes');
@@ -11,7 +11,6 @@ const path = require('path');
 
 // Middleware
 
-
 // Passport configuration
 passport.use(
   new LocalStrategy(
@@ -19,29 +18,29 @@ passport.use(
       usernameField: 'email'
     },
     function (email, password, done) {
-      User.findOne({ where: { email: email } })
-        .then((user) => {
-          if (!user) {
+      Customer.findOne({ where: { email: email } }) // Use the Customer model instead of User
+        .then((customer) => {
+          if (!customer) {
             return done(null, false, { message: 'Incorrect email.' });
           }
-          if (!user.validPassword(password)) {
+          if (!customer.validPassword(password)) {
             return done(null, false, { message: 'Incorrect password.' });
           }
-          return done(null, user);
+          return done(null, customer);
         })
         .catch((err) => done(err));
     }
   )
 );
 
-passport.serializeUser((user, done) => {
-  done(null, user.id);
+passport.serializeUser((customer, done) => {
+  done(null, customer.id);
 });
 
 passport.deserializeUser((id, done) => {
-  User.findByPk(id)
-    .then((user) => {
-      done(null, user);
+  Customer.findByPk(id)
+    .then((customer) => {
+      done(null, customer);
     })
     .catch((err) => done(err));
 });

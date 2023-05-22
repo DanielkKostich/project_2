@@ -77,7 +77,7 @@ router.get('/profile', async (req, res) => {
       return res.status(400).json({ error: 'Not logged in' });
     }
 
-    const username = req.session.username;
+    const username = req.session.passport.user.username;
     res.redirect(`/customer/${username}`);
   } catch (err) {
     console.log(err);

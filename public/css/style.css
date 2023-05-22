@@ -325,6 +325,7 @@ a:hover{
     font-weight: 200;
     font-size: 25px;
     padding: 2px 0;
+    text-align: center;
 }
 .logbutton{
     display: block;
@@ -482,6 +483,7 @@ background: linear-gradient(175deg, rgba(203,196,170,1) 0%, rgba(164,157,131,1) 
     border-bottom-right-radius: 100px;
     border-bottom: 4px solid #585544;
     border-right: 4px solid #585544;
+    object-fit: cover;
   }
   .stylistidcard{
     font-size: 20px;

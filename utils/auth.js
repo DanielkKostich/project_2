@@ -28,9 +28,8 @@ var router = express.Router();
 passport.serializeUser(function(user, cb) {
   process.nextTick(function() {
     return cb(null, {
-      id: user.id,
+      id: user.customer_id,
       username: user.username,
-      picture: user.picture
     });
   });
 });

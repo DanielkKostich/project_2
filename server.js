@@ -68,8 +68,11 @@ passport.use(
 );
 
 // Serialize and deserialize user
-passport.serializeUser((customer, done) => {
-  done(null, customer.id);
+passport.serializeUser(function(customer, done) {
+   done(null, {
+    id: customer.customer_id,
+    username: customer.username,
+  });
 });
 
 passport.deserializeUser((id, done) => {

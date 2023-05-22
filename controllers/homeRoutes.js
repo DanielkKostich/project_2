@@ -122,7 +122,9 @@ router.get('/reviews/create', async (req, res) => {
     const employees = dbEmployeeData.map((employee) =>
       employee.get({ plain: true })
     );
-    res.render('create-reviews', { employees, customer_id: req.session.user_id, loggedIn: req.user });
+    const customerfetch= await Customer.findOne({ where: { username: req.session.passport.user.username } });
+    cusid = customerfetch.customer_id;
+    res.render('create-reviews', { employees, customer_id: cusid, loggedIn: req.user });
   } catch (err) {
     console.log(err);
     res.status(500).json(err);

@@ -139,6 +139,12 @@ background: linear-gradient(175deg, rgba(203,196,170,1) 0%, rgba(164,157,131,1) 
     background-color: rgb(228, 218, 133);
     padding: 10px;
     border-radius: 25px;
+    min-width: 20%;
+}
+#logoText{
+    font-size: 46px;
+    font-weight: 900;
+    font-style: italic;
 }
 
 @media screen and (max-width:1700px){
@@ -574,6 +580,13 @@ background: linear-gradient(175deg, rgba(203,196,170,1) 0%, rgba(164,157,131,1) 
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
   }
+
+.Applefied{
+    border-top-left-radius: 60px;
+    border-top-right-radius: 60px;
+    border-bottom-left-radius: 60px;
+    border-bottom-right-radius: 60px;
+}
 
 .rate {
     float: left;

@@ -14,10 +14,10 @@
   <div class="d-flex flex-column min-vh-100">
     <header>
       <div class="banner" style="background-color: rgb(149, 110, 185);">
-        <div class="d-flex justify-content-center align-items-center" id="logo">
-          <div id="logocard">
-            <img src="../../images/logo.png" style="width:50px;">
-            <a href="/" class="unadornedAnchor">FresHair</a>
+        <div class="d-flex centered" id="logo">
+          <div id="logocard" style="margin-bottom:-8px;margin-top:8px;">
+            <img src="../../images/logo.png" style="width:70px; margin-right:10px;margin-left:-10px;">
+            <a href="/" class="unadornedAnchor" id="logoText">FresHair</a>
           </div>
         </div>
         <nav>
@@ -35,9 +35,7 @@
             <a href="/prices" class="navbutton unadornedAnchor">Services</a>
             <a href="/reviews" class="navbutton unadornedAnchor">Reviews</a>
             {{#if loggedIn}}
-            <a href="/" id="logoutNav" class="logbutton unadornedAnchor">
-              <img style="width:20px; padding:5px 0;" src="https://icons.iconarchive.com/icons/iconsmind/outline/256/Key-icon.png">
-            </a>
+            <a href="/" id="logoutNav" class="navbutton unadornedAnchor">Logout</a>
             {{/if}}
           </div>
 

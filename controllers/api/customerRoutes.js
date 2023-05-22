@@ -73,19 +73,17 @@ router.post('/createuser', async (req, res) => {
       });
       return;
     }
-
     const newCustomer = await Customer.create({ email, username, name, password });
-
-    req.session.save(() => {
-      req.session.user_id = newCustomer.customer_id;
-      req.session.username = newCustomer.username;
-      req.session.loggedIn = true;
-      res.status(200).redirect('/');
+    req.login(newCustomer, function(err) {
+      if (err) { return next(err); }
+      res.redirect('/');
     });
   } catch (err) {
     res.status(500).json(err);
   }
 });
+
+
 
 router.post('/createreview', async (req, res) => {
   try {

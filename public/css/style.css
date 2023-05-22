@@ -516,7 +516,11 @@ background: linear-gradient(175deg, rgba(203,196,170,1) 0%, rgba(164,157,131,1) 
 
 #submitbutton{
     background-color: #585a46;
-    border-radius: 0;
+    border-radius: 0px;
+    padding:7px;
+    margin:10px;
+    margin-top:30px;
+    margin-left: 45%;
 
 }
 #submitbutton:hover{
@@ -657,53 +661,51 @@ background: linear-gradient(175deg, rgba(203,196,170,1) 0%, rgba(164,157,131,1) 
 }
 
 
-@media screen and (max-width:1700px){
+@media screen and (max-width: 1700px) {
     #logo {
-        padding-top:5px
+      padding-top: 5px;
     }
     nav {
-        margin-top: 2px;
+      margin-top: -2px;
     }
-    .mainsection{
-        width: 75%;
-    }
-}
-/* Adjustments for screens up to 768px wide */
-@media screen and (max-width: 768px) {
-    nav {
-        width: 100%;
-        padding: 2px;
-        margin-top: 10px;
-        padding-top: 0;
-    }
-    .yarr{
-        display: none;
-    }
-    #logo{
-        margin: 0;
-        padding-top: 10px;
-    }
-    #logocard{
-        padding: 5px;
-        margin:0px;
+    .mainsection {
+      width: 75%;
     }
   }
   
-  /* Adjustments for screens up to 480px wide */
-  @media screen and (max-width: 480px) {
+  @media screen and (max-width: 768px) {
     nav {
-        margin-top: 15px;
+      width: 100%;
+      padding: 2px;
+      margin-top: 10px;
+      padding-top: 0;
+    }
+    .yarr {
+      display: none;
     }
     #logo {
-        padding-top: 19px;
+      margin: 0;
+      padding-top: 10px;
     }
-    #wideScreenButtons{
-        display: none;
+    #logocard {
+      padding: 5px;
+      margin: 0px;
     }
-    #smallScreenButton{
-        display:block;
+  }
+  
+  @media screen and (max-width: 480px) {
+    nav {
+      margin-top: 15px;
     }
-    
+    #logo {
+      padding-top: 15px;
+    }
+    #wideScreenButtons {
+      display: none;
+    }
+    #smallScreenButton {
+      display: block;
+    }
     .navbutton {
       width: 100px;
       height: 25px;
@@ -724,10 +726,9 @@ background: linear-gradient(175deg, rgba(203,196,170,1) 0%, rgba(164,157,131,1) 
     }
   }
   
-  /* Adjustments for screens up to 360px wide */
   @media screen and (max-width: 360px) {
     nav {
-        margin-top: 20px;
+      margin-top: 20px;
     }
     .banner {
       border-bottom: 0;

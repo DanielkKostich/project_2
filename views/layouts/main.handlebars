@@ -6,78 +6,60 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>FresHair</title>
   <link rel="stylesheet" type="text/css" href="/css/jass.css">
-  <link rel="stylesheet" type="text/css" href="/css/style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  
+  <link rel="stylesheet" type="text/css" href="/css/style.css">
 </head>
 
 <body>
-  <div class="flex-column justify-space-around">
-    <header >
+  <div class="d-flex flex-column min-vh-100">
+    <header>
       <div class="banner" style="background-color: rgb(149, 110, 185);">
-      <h1 class="flex-row centered" id="logo">
-        <div id="logocard">
-        <img src="../../images/logo.png" style="width:50px;">
-        <a href="/" class="unadornedAnchor">FresHair</a>
+        <div class="d-flex justify-content-center align-items-center" id="logo">
+          <div id="logocard">
+            <img src="../../images/logo.png" style="width:50px;">
+            <a href="/" class="unadornedAnchor">FresHair</a>
+          </div>
         </div>
-      </h1>
-      <nav>
-      <div style="justify-content:space-evenly;" id="wideScreenButtons" class="flex-row navigation">
-        <a href="/" class="navbutton unadornedAnchor">Home</a>
-        <!-- Conditionally render login or logout links -->
-        {{#if loggedIn}}
-        <a class="navbutton" href="/profile">Profile</a> 
-        {{else}}
-        <a href="/login" class=" navbutton unadornedAnchor">Login</a>
-        <a href="/Employee_Login" class="navbutton unadornedAnchor">Employee Login</a>
-        <a href="/signup" class="navbutton unadornedAnchor">Sign-Up</a>
-        {{/if}}
-        
-        <a href="/hours" class="navbutton unadornedAnchor">Hours</a>
-        <a href="/stylist" class="navbutton unadornedAnchor">Stylists</a>
-        <a href="/prices" class="navbutton unadornedAnchor">Services</a>
-        <a href="/reviews" class="navbutton unadornedAnchor">Reviews</a>
-        {{#if loggedIn}}
-        <a href="/" id="logoutNav" class="logbutton unadornedAnchor"><img style="width:20px; padding:5px 0;" src="https://icons.iconarchive.com/icons/iconsmind/outline/256/Key-icon.png"></a>
-        {{/if}}
-        </div>
+        <nav>
+          <div class="d-flex justify-content-evenly " id="wideScreenButtons">
+            <a href="/" class="navbutton unadornedAnchor">Home</a>
+            {{#if loggedIn}}
+            <a class="navbutton" href="/profile">Profile</a>
+            {{else}}
+            <a href="/login" class="navbutton unadornedAnchor">Login</a>
+            <a href="/Employee_Login" class="navbutton unadornedAnchor">Employee Login</a>
+            <a href="/signup" class="navbutton unadornedAnchor">Sign-Up</a>
+            {{/if}}
+            <a href="/hours" class="navbutton unadornedAnchor">Hours</a>
+            <a href="/stylist" class="navbutton unadornedAnchor">Stylists</a>
+            <a href="/prices" class="navbutton unadornedAnchor">Services</a>
+            <a href="/reviews" class="navbutton unadornedAnchor">Reviews</a>
+            {{#if loggedIn}}
+            <a href="/" id="logoutNav" class="logbutton unadornedAnchor">
+              <img style="width:20px; padding:5px 0;" src="https://icons.iconarchive.com/icons/iconsmind/outline/256/Key-icon.png">
+            </a>
+            {{/if}}
+          </div>
 
-        <div style="justify-content:space-evenly;" id="smallScreenButton" class="flex-row navigation">
-        <a href="/" class="navbutton unadornedAnchor">home</a>
-        </div>
-
-      </nav>
-      </div>
+          <div class="d-flex justify-content-evenly" id="smallScreenButton">
+            <a href="/" class="navbutton unadornedAnchor">home</a>
+          </div>
+        </nav>
       </div>
     </header>
     <br>
-    <div class="flex-row flex-nowrap mt-5">
-    <aside>
-      <div class="flex-column" >
-        <span class="yarr">Disable your ad-blocker. </span>
+    <div class="d-flex flex-row flex-nowrap mt-5">
+      <div class="d-flex flex-column mainsection">
+        <main class="container mt-5">
+          <!-- Render the sub layout -->
+          {{{ body }}}
+        </main>
       </div>
-    </aside>
-    <div class="flex-column mainsection">
-    <main class="container container-fluid mt-5">
-      <!-- Render the sub layout -->
-      {{{ body }}}
-    </main>
     </div>
-    <aside>
-      <div class="flex-column">
-        <span class="yarr">Disable your ad-blocker.</span>
-      </div>
-    </aside>
-    </div>
-    <footer>
-      
-    </footer>
+    <footer></footer>
   </div>
 
   <!-- Render script for logged in users only -->
   {{#if loggedIn}}
   <script src="/js/logout.js"></script>
   {{/if}}
-</body>
-
-</html>

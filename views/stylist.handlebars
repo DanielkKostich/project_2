@@ -1,26 +1,37 @@
-<div style="text-align: center;">
-  <h1>Meet our Stylists!!!</h1>
-  <img src="../images/stylist logo.jpg">
-</div>
-
-{{#each stylists as |stylist|}}
-{{!-- Card container --}}
-<div class="profileCard container">
-    {{!-- Header Section --}}
-    <div class="profileCardHeader row pt-1">
-        <h2>{{stylist.name}}</h2>
+<head>
+ <link rel="stylesheet" type="text/css" href="/css/stylistStyle.css">
+</head>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="text-center bg-ultra p-3">
+        <h1 class="pt-2">Our Stylists:</h1>
+      </div>
     </div>
-    {{!-- Body Section --}}
-    <div class="profileCardBody row">
-        <div class="profileCardMain col-sm m-5">
-          <div class="stylistidcard">
-            <b>Name: </b>{{stylist.name}}<br>
-            <b>E-Mail: </b><a href="mailto:{{stylist.email}}">{{stylist.email}}</a><br>
+  </div>
+
+  {{#each stylists as |stylist|}}
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card m-3">
+        <div class="card-header bg-dark">
+          <h2>{{stylist.name}}</h2>
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-sm-8 m-3">
+              <div class="stylistidcard">
+                <b>Name: </b>{{stylist.name}}<br>
+                <b>E-Mail: </b><a href="mailto:{{stylist.email}}">{{stylist.email}}</a><br>
+              </div>
+            </div>
+            <div class="col-sm-3">
+              <img src="/images/employee_photo/{{stylist.employee_id}}.jpg" class="employeeidphoto" alt="Image of {{stylist.name}}" width="200px" height="200px">
+            </div>
           </div>
         </div>
-        <div class="profileCardAside rightward col-sm">
-            <img src="/images/employee_photo/{{stylist.employee_id}}.jpg" class="employeeidphoto" alt="Image of {{stylist.name}}" width="200px" height="200px">
-        </div>
+      </div>
     </div>
+  </div>
+  {{/each}}
 </div>
-{{/each}}
